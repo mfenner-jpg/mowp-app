@@ -1,0 +1,405 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover,maximum-scale=1.0,user-scalable=no">
+<title>Meals on Wheels of Pasco County</title><link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MOWP">
+<meta name="theme-color" content="#1a3a5c">
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+:root{--navy:#1a3a5c;--green:#2e7d32;--red:#c0392b;--gold:#c9a227;--cream:#faf7f2;--white:#fff;--border:#e0e0e0;--text-dark:#1a1a1a;--text-mid:#555;--shadow:0 2px 10px rgba(0,0,0,0.10);}
+html{height:100%;overflow:hidden;}
+body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:center;justify-content:center;font-family:'Lato',sans-serif;}
+#app{width:100%;max-width:430px;height:100dvh;display:flex;flex-direction:column;background:var(--cream);overflow:hidden;position:relative;}
+@media(min-width:500px){body{background:#d0d0d0;}#app{width:390px;height:844px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.28);}}
+
+/* TOP NAV — safe area push-down so it clears phone status bar */
+#topnav{
+  background:var(--navy);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 14px;
+  padding-top:env(safe-area-inset-top);
+  height:calc(62px + env(safe-area-inset-top));
+  flex-shrink:0;
+  z-index:100;
+}
+.logo-wrap{display:flex;align-items:center;gap:9px;}
+
+/* Logo: blue-background image, no white circle */
+.logo-img{width:46px;height:46px;border-radius:50%;object-fit:cover;display:block;}
+
+.logo-text{color:#fff;font-size:13px;font-weight:700;line-height:1.25;}
+.logo-text span{display:block;font-size:10px;font-weight:400;opacity:.8;}
+.nav-right{display:flex;align-items:center;gap:8px;}
+.back-btn{background:rgba(255,255,255,0.15);border:none;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;}
+
+/* Hamburger — explicit sizing & z-index so it's never hidden under battery icon */
+.hamburger{background:none;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;position:relative;z-index:101;}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;}
+
+#main{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;}
+#main::-webkit-scrollbar{width:3px;}
+#main::-webkit-scrollbar-thumb{background:rgba(26,58,92,0.25);border-radius:3px;}
+.hero{position:relative;height:175px;overflow:hidden;flex-shrink:0;}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:center 35%;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(26,58,92,0.55) 0%,rgba(26,58,92,0.15) 100%);display:flex;align-items:flex-end;padding:16px 18px;}
+.hero-title{color:#fff;font-family:'Playfair Display',serif;font-size:24px;font-weight:700;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,0.45);}
+.hero-sub{color:rgba(255,255,255,0.92);font-size:12.5px;margin-top:4px;text-shadow:0 1px 4px rgba(0,0,0,0.4);line-height:1.4;}
+.text-card{background:#fff;margin:10px 16px;border-radius:14px;padding:13px 16px;box-shadow:var(--shadow);border-left:4px solid var(--green);}
+.text-card h3{color:var(--navy);font-family:'Playfair Display',serif;font-size:15px;margin-bottom:5px;}
+.text-card p{color:var(--text-dark);font-size:12.5px;line-height:1.55;}
+.divider{display:flex;align-items:center;gap:10px;margin:4px 16px;}
+.divider-line{flex:1;height:1px;background:var(--border);}
+.divider-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.section-label{font-family:'Lato',sans-serif;font-size:11px;font-weight:900;color:var(--navy);text-transform:uppercase;letter-spacing:0.09em;padding:8px 16px 6px;}
+.action-buttons{padding:0 16px;display:flex;flex-direction:column;gap:8px;}
+.action-btn{display:block;position:relative;height:90px;border-radius:14px;overflow:hidden;text-decoration:none;box-shadow:var(--shadow);transition:transform 0.15s;}
+.action-btn:active{transform:scale(0.98);}
+.action-btn-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;object-position:center center;}
+.action-btn-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0.28) 0%,rgba(0,0,0,0.10) 100%);}
+.action-btn-content{position:absolute;inset:0;display:flex;align-items:center;padding:0 18px;}
+.ab-text{flex:1;}
+.ab-title{font-family:'Lato',sans-serif;font-size:15px;font-weight:900;color:#fff;line-height:1.2;text-shadow:0 1px 6px rgba(0,0,0,0.45);}
+.ab-sub{font-size:11px;color:rgba(255,255,255,0.88);margin-top:3px;line-height:1.3;text-shadow:0 1px 4px rgba(0,0,0,0.35);}
+.ab-arrow{width:32px;height:32px;flex-shrink:0;background:rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:900;}
+.bottom-space{height:20px;}
+
+/* BOTTOM NAV — centered items, safe-area padding */
+#bottomnav{
+  height:68px;
+  background:#fff;
+  border-top:1px solid #e4e4e4;
+  display:flex;
+  align-items:stretch;
+  flex-shrink:0;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.bnav-item{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:8px 0;
+  text-decoration:none;
+  text-align:center;
+}
+.bnav-icon{font-size:20px;line-height:1;}
+.bnav-label{font-size:10px;font-weight:700;color:#999;font-family:'Lato',sans-serif;letter-spacing:.3px;}
+.bnav-item.active .bnav-label{color:var(--navy);}
+.bnav-donate.active .bnav-label{color:var(--red);}
+
+/* MENU OVERLAY */
+#menuOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;}
+#menuOverlay.open{display:block;}
+#sideMenu{position:fixed;top:0;right:-320px;width:300px;height:100%;background:#fff;z-index:201;display:flex;flex-direction:column;transition:right 0.3s ease;box-shadow:-4px 0 20px rgba(0,0,0,0.2);}
+#sideMenu.open{right:0;}
+#menuHeader{background:#1a3a5c;display:flex;align-items:center;justify-content:space-between;padding:0 18px;height:62px;flex-shrink:0;}
+#menuHeader span{color:#fff;font-family:'Lato',sans-serif;font-size:16px;font-weight:900;letter-spacing:1px;text-transform:uppercase;}
+#menuClose{background:rgba(255,255,255,0.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer;}
+#menuBody{flex:1;overflow-y:auto;padding:8px 0;}
+.menu-item{display:flex;align-items:center;padding:14px 20px;font-family:'Lato',sans-serif;font-size:14px;font-weight:700;color:#1a3a5c;text-decoration:none;border-bottom:1px solid #f0f0f0;gap:10px;}
+.donate-item{background:#c0392b;color:#fff;margin:12px 16px;border-radius:12px;justify-content:center;font-size:15px;}
+.menu-group{border-bottom:1px solid #f0f0f0;}
+.menu-group-title{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;font-family:'Lato',sans-serif;font-size:14px;font-weight:700;color:#1a3a5c;}
+.chevron{font-size:18px;transition:transform 0.2s;color:#c9a227;}
+.menu-group-title.open .chevron{transform:rotate(90deg);}
+.menu-sub{display:none;background:#f9f9f9;}
+.menu-sub.open{display:block;}
+.menu-sub-item{display:block;padding:11px 20px 11px 36px;font-family:'Lato',sans-serif;font-size:13px;font-weight:600;color:#555;text-decoration:none;border-bottom:1px solid #efefef;}
+
+/* CAROUSEL */
+.carousel{position:relative;overflow:hidden;flex-shrink:0;}
+.carousel-track{display:flex;transition:transform 0.4s ease;}
+.carousel-slide{min-width:100%;position:relative;height:220px;overflow:hidden;cursor:pointer;}
+.carousel-slide img{width:100%;height:100%;object-fit:cover;}
+.carousel-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 60%);display:flex;align-items:flex-end;padding:16px 18px;}
+.carousel-overlay h2{color:#fff;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;text-shadow:0 2px 6px rgba(0,0,0,0.5);line-height:1.2;}
+.carousel-overlay p{color:rgba(255,255,255,0.88);font-size:11.5px;margin-top:3px;}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.25);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.carousel-btn.prev{left:10px;}.carousel-btn.next{right:10px;}
+.carousel-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:6px;}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.5);cursor:pointer;}
+.dot.active{background:#fff;}
+
+/* HOW CAN WE HELP */
+.how-header{padding:14px 16px 8px;font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--navy);}
+.focus-cards-wrap{overflow-x:auto;padding:0 16px 12px;scrollbar-width:none;}
+.focus-cards-wrap::-webkit-scrollbar{display:none;}
+.focus-cards{display:flex;gap:10px;width:max-content;}
+.focus-card{width:110px;background:#fff;border-radius:14px;padding:14px 10px 12px;box-shadow:var(--shadow);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.focus-card img{width:56px;height:56px;object-fit:contain;}
+.focus-card-title{font-size:11px;font-weight:900;color:var(--navy);text-align:center;line-height:1.3;}
+.focus-card-sub{font-size:10px;color:var(--text-mid);text-align:center;line-height:1.3;}
+.focus-card-btn{background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:5px 10px;border-radius:20px;margin-top:2px;}
+
+/* PROMO BANNERS */
+.promo-banner{margin:0 16px 10px;border-radius:14px;overflow:hidden;position:relative;height:90px;box-shadow:var(--shadow);text-decoration:none;display:block;}
+.promo-banner img{width:100%;height:100%;object-fit:cover;object-position:center center;}
+.promo-banner-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,58,92,0.60) 0%,rgba(26,58,92,0.15) 100%);display:flex;flex-direction:column;justify-content:center;padding:0 16px;}
+.promo-banner-overlay h3{color:#fff;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;}
+.promo-banner-overlay p{color:rgba(255,255,255,0.88);font-size:11px;margin-top:2px;}
+.events-banner img{object-position:center 20%;}
+
+
+
+/* --- UPCOMING EVENTS --- */
+.events-wrap { background:#fff; padding:0 14px 14px; }
+.event-card {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 0; border-bottom:1px solid #e0e0e0;
+  text-decoration:none; cursor:pointer;
+}
+.event-card:last-child { border-bottom:none; }
+.event-date {
+  background:var(--navy); color:#fff;
+  border-radius:10px; padding:6px 10px;
+  text-align:center; min-width:48px; flex-shrink:0;
+}
+.event-date .ev-month { font-family:'Lato',sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; }
+.event-date .ev-day { font-family:'Lato',sans-serif; font-size:22px; font-weight:900; line-height:1; }
+.event-info { flex:1; }
+.event-title { font-family:'Lato',sans-serif; font-size:13px; font-weight:700; color:#1a1a1a; line-height:1.3; }
+.event-time { font-size:11px; color:#555; margin-top:2px; }
+.view-all-link {
+  display:block; text-align:center;
+  color:var(--navy); font-family:'Lato',sans-serif;
+  font-size:13px; font-weight:700; padding:12px;
+  text-decoration:none;
+}
+
+/* --- NEWS & BLOGS --- */
+.news-wrap { background:#f4f4f4; padding:0 14px 14px; }
+.news-card {
+  background:#fff; border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.10); padding:14px;
+  margin-bottom:10px; text-decoration:none; display:block;
+  border-left:4px solid var(--navy);
+}
+.news-card:last-child { margin-bottom:0; }
+.news-tag { font-size:10px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:4px; font-family:'Lato',sans-serif; }
+.news-title { font-family:'Lato',sans-serif; font-size:13.5px; font-weight:700; color:#1a1a1a; line-height:1.35; }
+.news-date { font-size:11px; color:#555; margin-top:4px; }
+.news-excerpt { font-size:11.5px; color:#555; margin-top:5px; line-height:1.45; }
+
+/* --- SECTION HEADER (events/news) --- */
+.section-header-block {
+  font-family:'Lato',sans-serif; font-size:13px; font-weight:900;
+  color:var(--navy); letter-spacing:0.09em; text-transform:uppercase;
+  padding:16px 16px 10px;
+  background:#f4f4f4;
+}
+.section-header-block.white-bg { background:#fff; }
+</style></head>
+<body><div id="app">
+
+<!-- TOP NAV -->
+<div id="topnav">
+  <div class="logo-wrap">
+    <img class="logo-img" src="images/Blue_Meals_Logo.jpg" alt="MOWP Logo">
+    <div class="logo-text">Meals on Wheels<span>of Pasco County</span></div>
+  </div>
+  <div class="nav-right">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<!-- MENU OVERLAY -->
+<div id="menuOverlay" onclick="closeMenu()"></div>
+<div id="sideMenu">
+  <div id="menuHeader"><span>Menu</span><button onclick="closeMenu()" id="menuClose">&#10005;</button></div>
+  <div id="menuBody">
+    <a class="menu-item" href="index.html">&#127968; Home</a>
+    <div class="menu-group"><div class="menu-group-title" onclick="toggleGroup(this)"><span>&#8505; About Us</span><span class="chevron">&#8250;</span></div><div class="menu-sub">
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/our-mission-history" target="_blank">Our Mission &amp; History</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/our-team" target="_blank">Our Team</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/sponsors-community-partners" target="_blank">Sponsors &amp; Partners</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/contact-us" target="_blank">Contact Us</a>
+    </div></div>
+    <div class="menu-group"><div class="menu-group-title" onclick="toggleGroup(this)"><span>&#127860; Get Meals</span><span class="chevron">&#8250;</span></div><div class="menu-sub">
+      <a class="menu-sub-item" href="mowp_getmeals.html">Get Meals Home</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/get-meals-1" target="_blank">Arrange for Home Delivery</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/weekly-menu" target="_blank">Weekly Menu</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/meal-delivery-faqs" target="_blank">Meal Delivery FAQs</a>
+    </div></div>
+    <div class="menu-group"><div class="menu-group-title" onclick="toggleGroup(this)"><span>&#10084;&#65039; Give Hope in Pasco</span><span class="chevron">&#8250;</span></div><div class="menu-sub">
+      <a class="menu-sub-item" href="mowp_givehope.html">Give Hope Home</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/Donate%20Form" target="_blank">Donate Today</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/amazon-wishlist-0" target="_blank">Amazon Wishlist</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/change-life" target="_blank">Donation Options</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/donation-faqs" target="_blank">Donation FAQs</a>
+    </div></div>
+    <div class="menu-group"><div class="menu-group-title" onclick="toggleGroup(this)"><span>&#128100; Volunteer</span><span class="chevron">&#8250;</span></div><div class="menu-sub">
+      <a class="menu-sub-item" href="mowp_volunteer.html">Volunteer Home</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/make-difference" target="_blank">Individual Volunteer</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/recipe-change" target="_blank">Group Volunteer</a>
+    </div></div>
+    <div class="menu-group"><div class="menu-group-title" onclick="toggleGroup(this)"><span>&#127374; Programs</span><span class="chevron">&#8250;</span></div><div class="menu-sub">
+      <a class="menu-sub-item" href="mowp_programs.html">Programs Home</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/feeding-you-love-food-pantry-1" target="_blank">Feeding You With Love</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/genesis" target="_blank">Genesis Center</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/chipz" target="_blank">CHIPZ</a>
+    </div></div>
+    <div class="menu-group"><div class="menu-group-title" onclick="toggleGroup(this)"><span>&#128197; Events</span><span class="chevron">&#8250;</span></div><div class="menu-sub">
+      <a class="menu-sub-item" href="mowp_events.html">Events Home</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/person-jesus-bible-study" target="_blank">Person of Jesus Bible Study</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/silver-lining-social" target="_blank">Silver Lining Social</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/east-pasco-quilt-guild" target="_blank">East Pasco Quilt Guild</a>
+      <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/foot-health-awareness-month" target="_blank">Foot Health Awareness</a>
+    </div></div>
+    <a class="menu-item" href="mowp_news.html">&#128240; News &amp; Blog</a>
+    <a class="menu-item donate-item" href="https://www.mealsonwheelspasco.org/Donate%20Form" target="_blank">&#10084; Donate Now</a>
+  </div>
+</div>
+
+<!-- MAIN SCROLL AREA -->
+<div id="main">
+
+  <!-- CAROUSEL -->
+  <div class="carousel" id="carousel">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/get-meals-0','_blank')"><img src="images/rotor1.jpg"><div class="carousel-overlay"><div><h2>Together, We Can Deliver</h2><p>Meals delivered to your home Monday through Friday.</p></div></div></div>
+      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/volunteer-opportunities','_blank')"><img src="images/rotor2.jpg"><div class="carousel-overlay"><div><h2>Pasco Runs on Heart</h2><p>Join our team and bring companionship home.</p></div></div></div>
+      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/amazon-wishlist-0','_blank')"><img src="images/rotor3.jpg"><div class="carousel-overlay"><div><h2>Amazon Wishlist</h2><p>Every item donated delivers kindness to seniors in need.</p></div></div></div>
+      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/our-programs','_blank')"><img src="images/rotor4.png"><div class="carousel-overlay"><div><h2>Discover Our Programs</h2><p>Explore the ways you can engage and assist those in need.</p></div></div></div>
+    </div>
+    <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#8249;</button>
+    <button class="carousel-btn next" onclick="moveCarousel(1)">&#8250;</button>
+    <div class="carousel-dots">
+      <div class="dot active" onclick="goToSlide(0)"></div>
+      <div class="dot" onclick="goToSlide(1)"></div>
+      <div class="dot" onclick="goToSlide(2)"></div>
+      <div class="dot" onclick="goToSlide(3)"></div>
+    </div>
+  </div>
+
+  <!-- HOW CAN WE HELP -->
+  <div class="how-header">How Can We Help?</div>
+  <div class="focus-cards-wrap"><div class="focus-cards">
+    <a class="focus-card" href="mowp_givehope.html"><img src="images/icon_donate.png"><div class="focus-card-title">Donate</div><div class="focus-card-sub">Help nourish a local senior today</div><div class="focus-card-btn">Donate Today</div></a>
+    <a class="focus-card" href="mowp_getmeals.html"><img src="images/icon_meals.png"><div class="focus-card-title">Get Meals</div><div class="focus-card-sub">Hot entree, fruit &amp; dessert</div><div class="focus-card-btn">Sign Up</div></a>
+    <a class="focus-card" href="mowp_volunteer.html"><img src="images/icon_volunteer.png"><div class="focus-card-title">Volunteer</div><div class="focus-card-sub">Make a difference today</div><div class="focus-card-btn">Get Involved</div></a>
+  </div></div>
+
+  <!-- EXPLORE PROMO BANNERS -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+  <div class="section-label">Explore</div>
+  <a class="promo-banner" href="mowp_getmeals.html"><img src="images/promo_meals.jpg"><div class="promo-banner-overlay"><h3>Get Meals!</h3><p>Fresh, hot meals delivered daily right to you.</p></div></a>
+  <a class="promo-banner" href="mowp_givehope.html"><img src="images/promo_give.jpg"><div class="promo-banner-overlay"><h3>Give Hope in Pasco</h3><p>Your donation changes a life in East Pasco.</p></div></a>
+  <a class="promo-banner events-banner" href="mowp_events.html"><img src="images/promo_events.jpg"><div class="promo-banner-overlay"><h3>Upcoming Events</h3><p>See what's happening in our community.</p></div></a>
+
+  
+  <!-- DIVIDER -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+  <!-- UPCOMING EVENTS -->
+  <div class="section-header-block white-bg">Upcoming Events</div>
+  <div class="events-wrap">
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/foot-health-awareness-month" target="_blank">
+      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">22</div></div>
+      <div class="event-info">
+        <div class="event-title">Foot Health Awareness Month</div>
+        <div class="event-time">Tue, Apr 22 &bull; 12:00pm</div>
+      </div>
+    </a>
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/person-jesus-bible-study" target="_blank">
+      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">24</div></div>
+      <div class="event-info">
+        <div class="event-title">Person of Jesus Bible Study</div>
+        <div class="event-time">Thu, Apr 24 &bull; 6:00pm</div>
+      </div>
+    </a>
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/silver-lining-social" target="_blank">
+      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">25</div></div>
+      <div class="event-info">
+        <div class="event-title">Silver Lining Social</div>
+        <div class="event-time">Fri, Apr 25 &bull; 1:00pm</div>
+      </div>
+    </a>
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/node/289" target="_blank">
+      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">29</div></div>
+      <div class="event-info">
+        <div class="event-title">Feeding You With Love Food Pantry</div>
+        <div class="event-time">Tue, Apr 29 &bull; 12:00pm</div>
+      </div>
+    </a>
+    <a class="view-all-link" href="https://www.mealsonwheelspasco.org/calendar" target="_blank">View All Events &rarr;</a>
+  </div>
+
+  <!-- NEWS & BLOGS -->
+  <div class="section-header-block">News &amp; Blogs</div>
+  <div class="news-wrap">
+    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog" target="_blank">
+      <div class="news-tag">Community News</div>
+      <div class="news-title">Celebrating 50 Years of Serving East Pasco</div>
+      <div class="news-date">April 2026</div>
+      <div class="news-excerpt">Join us as we celebrate five decades of delivering meals and hope to seniors and families throughout East Pasco County.</div>
+    </a>
+    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog" target="_blank">
+      <div class="news-tag">Volunteer Spotlight</div>
+      <div class="news-title">Pasco Runs on Heart — Meet Our Amazing Volunteers</div>
+      <div class="news-date">March 2026</div>
+      <div class="news-excerpt">Our dedicated volunteers are the backbone of everything we do. Read how they're making a lasting impact in our community.</div>
+    </a>
+    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog" target="_blank">
+      <div class="news-tag">Programs</div>
+      <div class="news-title">Feeding You With Love Food Pantry — Spring Update</div>
+      <div class="news-date">March 2026</div>
+      <div class="news-excerpt">The food pantry continues to grow, serving more families each month. See how your donations are making a difference.</div>
+    </a>
+    <a class="view-all-link" href="https://www.mealsonwheelspasco.org/blog" target="_blank" style="color:var(--navy);">View All News &amp; Blogs &rarr;</a>
+  </div>
+
+<div class="bottom-space"></div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav id="bottomnav">
+  <a class="bnav-item active" href="index.html"><span class="bnav-icon">&#127968;</span><span class="bnav-label">Home</span></a>
+  <a class="bnav-item bnav-donate" href="javascript:window.open('https://www.mealsonwheelspasco.org/Donate%20Form','_blank')"><span class="bnav-icon">&#10084;&#65039;</span><span class="bnav-label">Donate</span></a>
+  <a class="bnav-item" href="mowp_programs.html"><span class="bnav-icon">&#127374;</span><span class="bnav-label">Programs</span></a>
+  <a class="bnav-item" href="mowp_events.html"><span class="bnav-icon">&#128197;</span><span class="bnav-label">Events</span></a>
+</nav>
+
+</div><script>
+// HAMBURGER MENU
+var hamburgerBtn = document.getElementById('hamburgerBtn');
+hamburgerBtn.addEventListener('click', function(e){
+  e.stopPropagation();
+  openMenu();
+});
+function openMenu(){
+  document.getElementById('sideMenu').classList.add('open');
+  document.getElementById('menuOverlay').classList.add('open');
+}
+function closeMenu(){
+  document.getElementById('sideMenu').classList.remove('open');
+  document.getElementById('menuOverlay').classList.remove('open');
+}
+function toggleGroup(el){
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+// CAROUSEL
+var cur=0;
+var track=document.getElementById('carouselTrack');
+function getW(){return document.querySelector('.carousel-slide').offsetWidth;}
+function moveCarousel(dir){var n=document.querySelectorAll('.carousel-slide').length;cur=(cur+dir+n)%n;goToSlide(cur);}
+function goToSlide(n){cur=n;track.style.transform='translateX(-'+(n*getW())+'px)';document.querySelectorAll('.dot').forEach(function(d,i){d.classList.toggle('active',i===n);});}
+setInterval(function(){moveCarousel(1);},4000);
+
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){});}
+</script></body></html>
