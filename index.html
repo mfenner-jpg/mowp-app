@@ -72,13 +72,13 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 
 /* BOTTOM NAV — centered items, safe-area padding */
 #bottomnav{
-  height:68px;
   background:#fff;
   border-top:1px solid #e4e4e4;
   display:flex;
   align-items:stretch;
   flex-shrink:0;
   padding-bottom:env(safe-area-inset-bottom);
+  min-height:68px;
 }
 .bnav-item{
   flex:1;
@@ -90,7 +90,7 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
   background:none;
   border:none;
   cursor:pointer;
-  padding:8px 0;
+  padding:10px 0 8px;
   text-decoration:none;
   text-align:center;
 }
@@ -304,62 +304,62 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
   <!-- DIVIDER -->
   <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
 
-  <!-- UPCOMING EVENTS -->
+  <!-- UPCOMING EVENTS — update dates/times to match your Drupal calendar -->
   <div class="section-header-block white-bg">Upcoming Events</div>
   <div class="events-wrap">
-    <a class="event-card" href="https://www.mealsonwheelspasco.org/foot-health-awareness-month" target="_blank">
-      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">22</div></div>
-      <div class="event-info">
-        <div class="event-title">Foot Health Awareness Month</div>
-        <div class="event-time">Tue, Apr 22 &bull; 12:00pm</div>
-      </div>
-    </a>
     <a class="event-card" href="https://www.mealsonwheelspasco.org/person-jesus-bible-study" target="_blank">
-      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">24</div></div>
+      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">17</div></div>
       <div class="event-info">
         <div class="event-title">Person of Jesus Bible Study</div>
-        <div class="event-time">Thu, Apr 24 &bull; 6:00pm</div>
+        <div class="event-time">Thu, Apr 17 &bull; 6:00pm</div>
       </div>
     </a>
     <a class="event-card" href="https://www.mealsonwheelspasco.org/silver-lining-social" target="_blank">
-      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">25</div></div>
+      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">18</div></div>
       <div class="event-info">
         <div class="event-title">Silver Lining Social</div>
-        <div class="event-time">Fri, Apr 25 &bull; 1:00pm</div>
+        <div class="event-time">Fri, Apr 18 &bull; 1:00pm</div>
       </div>
     </a>
-    <a class="event-card" href="https://www.mealsonwheelspasco.org/node/289" target="_blank">
-      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">29</div></div>
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/east-pasco-quilt-guild" target="_blank">
+      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">22</div></div>
       <div class="event-info">
-        <div class="event-title">Feeding You With Love Food Pantry</div>
-        <div class="event-time">Tue, Apr 29 &bull; 12:00pm</div>
+        <div class="event-title">East Pasco Quilt Guild</div>
+        <div class="event-time">Tue, Apr 22 &bull; 9:00am</div>
+      </div>
+    </a>
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/foot-health-awareness-month" target="_blank">
+      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">25</div></div>
+      <div class="event-info">
+        <div class="event-title">Foot Health Awareness Month</div>
+        <div class="event-time">Fri, Apr 25 &bull; 12:00pm</div>
       </div>
     </a>
     <a class="view-all-link" href="https://www.mealsonwheelspasco.org/calendar" target="_blank">View All Events &rarr;</a>
   </div>
 
-  <!-- NEWS & BLOGS -->
+  <!-- NEWS & BLOGS — pulled from mowp_news.html -->
   <div class="section-header-block">News &amp; Blogs</div>
   <div class="news-wrap">
-    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog" target="_blank">
-      <div class="news-tag">Community News</div>
-      <div class="news-title">Celebrating 50 Years of Serving East Pasco</div>
-      <div class="news-date">April 2026</div>
-      <div class="news-excerpt">Join us as we celebrate five decades of delivering meals and hope to seniors and families throughout East Pasco County.</div>
+    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/april-newsletter" target="_blank">
+      <div class="news-tag">Newsletter</div>
+      <div class="news-title">April Newsletter</div>
+      <div class="news-date">April 8, 2026</div>
+      <div class="news-excerpt">Spring 2026 Edition — The Genesis Community Center and Meals on Wheels of Pasco. Spring is in full bloom!</div>
     </a>
-    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog" target="_blank">
-      <div class="news-tag">Volunteer Spotlight</div>
-      <div class="news-title">Pasco Runs on Heart — Meet Our Amazing Volunteers</div>
-      <div class="news-date">March 2026</div>
-      <div class="news-excerpt">Our dedicated volunteers are the backbone of everything we do. Read how they're making a lasting impact in our community.</div>
+    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/national-volunteer-month" target="_blank">
+      <div class="news-tag">Community</div>
+      <div class="news-title">National Volunteer Month</div>
+      <div class="news-date">April 1, 2026</div>
+      <div class="news-excerpt">April Is National Volunteer Month — celebrating those who give their time to Meals on Wheels of Pasco County.</div>
     </a>
-    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog" target="_blank">
-      <div class="news-tag">Programs</div>
-      <div class="news-title">Feeding You With Love Food Pantry — Spring Update</div>
-      <div class="news-date">March 2026</div>
-      <div class="news-excerpt">The food pantry continues to grow, serving more families each month. See how your donations are making a difference.</div>
+    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/new-tax-deduction-older-adults" target="_blank">
+      <div class="news-tag">Finance</div>
+      <div class="news-title">New Tax Deduction for Older Adults</div>
+      <div class="news-date">March 19, 2026</div>
+      <div class="news-excerpt">Congress passes a significant $6,000 tax break for Americans 65 and older through 2028.</div>
     </a>
-    <a class="view-all-link" href="https://www.mealsonwheelspasco.org/blog" target="_blank" style="color:var(--navy);">View All News &amp; Blogs &rarr;</a>
+    <a class="view-all-link" href="mowp_news.html" style="color:var(--navy);">View All News &amp; Blogs &rarr;</a>
   </div>
 
 <div class="bottom-space"></div>
@@ -369,7 +369,7 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 <nav id="bottomnav">
   <a class="bnav-item active" href="index.html"><span class="bnav-icon">&#127968;</span><span class="bnav-label">Home</span></a>
   <a class="bnav-item bnav-donate" href="javascript:window.open('https://www.mealsonwheelspasco.org/Donate%20Form','_blank')"><span class="bnav-icon">&#10084;&#65039;</span><span class="bnav-label">Donate</span></a>
-  <a class="bnav-item" href="mowp_programs.html"><span class="bnav-icon">&#127374;</span><span class="bnav-label">Programs</span></a>
+  <a class="bnav-item" href="mowp_programs.html"><span class="bnav-icon">&#127859;</span><span class="bnav-label">Programs</span></a>
   <a class="bnav-item" href="mowp_events.html"><span class="bnav-icon">&#128197;</span><span class="bnav-label">Events</span></a>
 </nav>
 
