@@ -16,10 +16,10 @@ html{height:100%;overflow:hidden;}
 body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:center;justify-content:center;font-family:'Lato',sans-serif;}
 #app{width:100%;max-width:430px;height:100dvh;display:flex;flex-direction:column;background:var(--cream);overflow:hidden;position:relative;}
 @media(min-width:500px){body{background:#d0d0d0;}#app{width:390px;height:844px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.28);}}
-#topnav{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 14px;height:62px;flex-shrink:0;z-index:100;}
+#topnav{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 14px;padding-top:env(safe-area-inset-top);height:calc(62px + env(safe-area-inset-top));flex-shrink:0;z-index:100;}
 .logo-wrap{display:flex;align-items:center;gap:9px;}
-.logo-circle{width:46px;height:46px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:2px;}
-.logo-circle img{width:42px;height:42px;object-fit:contain;}
+.logo-img{width:46px;height:46px;border-radius:50%;object-fit:cover;display:block;}
+
 .logo-text{color:#fff;font-size:13px;font-weight:700;line-height:1.25;}
 .logo-text span{display:block;font-size:10px;font-weight:400;opacity:.8;}
 .nav-right{display:flex;align-items:center;gap:8px;}
@@ -52,8 +52,8 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 .ab-sub{font-size:11px;color:rgba(255,255,255,0.88);margin-top:3px;line-height:1.3;text-shadow:0 1px 4px rgba(0,0,0,0.35);}
 .ab-arrow{width:32px;height:32px;flex-shrink:0;background:rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:900;}
 .bottom-space{height:20px;}
-#bottomnav{height:68px;background:#fff;border-top:1px solid #e4e4e4;display:flex;align-items:center;flex-shrink:0;padding-bottom:env(safe-area-inset-bottom);}
-.bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;cursor:pointer;padding:8px 0;text-decoration:none;}
+#bottomnav{background:#fff;border-top:1px solid #e4e4e4;display:flex;align-items:stretch;flex-shrink:0;padding-bottom:env(safe-area-inset-bottom);min-height:68px;}
+.bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;cursor:pointer;padding:10px 0 8px;text-decoration:none;text-align:center;}
 .bnav-icon{font-size:20px;line-height:1;}
 .bnav-label{font-size:10px;font-weight:700;color:#999;font-family:'Lato',sans-serif;letter-spacing:.3px;}
 .bnav-item.active .bnav-label{color:var(--navy);}
@@ -75,7 +75,7 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 .menu-sub{display:none;background:#f9f9f9;}
 .menu-sub.open{display:block;}
 .menu-sub-item{display:block;padding:11px 20px 11px 36px;font-family:'Lato',sans-serif;font-size:13px;font-weight:600;color:#555;text-decoration:none;border-bottom:1px solid #efefef;}
-</style></head><body><div id="app"><div id="topnav"><div class="logo-wrap"><div class="logo-circle"><img src="images/logo.png" alt="MOWP"></div><div class="logo-text">Meals on Wheels<span>of Pasco County</span></div></div><div class="nav-right"><button class="back-btn" onclick="history.back()">&#8592; Back</button><button class="hamburger"><span></span><span></span><span></span></button></div></div><div id="menuOverlay" onclick="closeMenu()"></div>
+</style></head><body><div id="app"><div id="topnav"><div class="logo-wrap"><img class="logo-img" src="images/Blue_Meals_Logo.jpg" alt="MOWP Logo"><div class="logo-text">Meals on Wheels<span>of Pasco County</span></div></div><div class="nav-right"><button class="back-btn" onclick="history.back()">&#8592; Back</button><button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button></div></div><div id="menuOverlay" onclick="closeMenu()"></div>
 <div id="sideMenu">
   <div id="menuHeader"><span>Menu</span><button onclick="closeMenu()" id="menuClose">&#10005;</button></div>
   <div id="menuBody">
@@ -104,7 +104,7 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
       <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/make-difference" target="_blank">Individual Volunteer</a>
       <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/recipe-change" target="_blank">Group Volunteer</a>
     </div></div>
-    <div class="menu-group"><div class="menu-group-title" onclick="toggleGroup(this)"><span>&#127374; Programs</span><span class="chevron">&#8250;</span></div><div class="menu-sub">
+    <div class="menu-group"><div class="menu-group-title" onclick="toggleGroup(this)"><span>&#127859; Programs</span><span class="chevron">&#8250;</span></div><div class="menu-sub">
       <a class="menu-sub-item" href="mowp_programs.html">Programs Home</a>
       <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/feeding-you-love-food-pantry-1" target="_blank">Feeding You With Love</a>
       <a class="menu-sub-item" href="https://www.mealsonwheelspasco.org/genesis" target="_blank">Genesis Center</a>
@@ -129,9 +129,9 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 <a class="action-btn" href="https://www.mealsonwheelspasco.org/feeding-you-love-food-pantry-1" target="_blank"><img class="action-btn-bg" src="images/prog_feeding.jpg" style="object-position:center 30%"><div class="action-btn-overlay"></div><div class="action-btn-content"><div class="ab-text"><div class="ab-title">Feeding You With Love</div><div class="ab-sub">Food Pantry serving Pasco County families</div></div><div class="ab-arrow">&#8250;</div></div></a>
 <a class="action-btn" href="https://www.mealsonwheelspasco.org/genesis" target="_blank"><img class="action-btn-bg" src="images/prog_gennie.jpg" style="object-position:center 25%"><div class="action-btn-overlay"></div><div class="action-btn-content"><div class="ab-text"><div class="ab-title">Genesis Center</div><div class="ab-sub">Socialize, connect &amp; access local services</div></div><div class="ab-arrow">&#8250;</div></div></a>
 <a class="action-btn" href="https://www.mealsonwheelspasco.org/chipz" target="_blank"><img class="action-btn-bg" src="images/prog_chipz.jpg" style="object-position:center center"><div class="action-btn-overlay"></div><div class="action-btn-content"><div class="ab-text"><div class="ab-title">CHIPZ</div><div class="ab-sub">Community Hope &amp; Intervention Project of Zephyrhills</div></div><div class="ab-arrow">&#8250;</div></div></a>
-</div><div class="bottom-space"></div></div><nav id="bottomnav"><a class="bnav-item" href="index.html"><span class="bnav-icon">&#127968;</span><span class="bnav-label">Home</span></a><a class="bnav-item bnav-donate" href="javascript:window.open('https://www.mealsonwheelspasco.org/Donate%20Form','_blank')"><span class="bnav-icon">&#10084;&#65039;</span><span class="bnav-label">Donate</span></a><a class="bnav-item active" href="mowp_programs.html"><span class="bnav-icon">&#127374;</span><span class="bnav-label">Programs</span></a><a class="bnav-item" href="mowp_events.html"><span class="bnav-icon">&#128197;</span><span class="bnav-label">Events</span></a></nav></div><script>
+</div><div class="bottom-space"></div></div><nav id="bottomnav"><a class="bnav-item" href="index.html"><span class="bnav-icon">&#127968;</span><span class="bnav-label">Home</span></a><a class="bnav-item bnav-donate" href="javascript:window.open('https://www.mealsonwheelspasco.org/Donate%20Form','_blank')"><span class="bnav-icon">&#10084;&#65039;</span><span class="bnav-label">Donate</span></a><a class="bnav-item active" href="mowp_programs.html"><span class="bnav-icon">&#127859;</span><span class="bnav-label">Programs</span></a><a class="bnav-item" href="mowp_events.html"><span class="bnav-icon">&#128197;</span><span class="bnav-label">Events</span></a></nav></div><script>
 function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('menuOverlay').classList.add('open');}
 function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('menuOverlay').classList.remove('open');}
 function toggleGroup(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open');}
-document.querySelector('.hamburger').addEventListener('click',openMenu);
+document.getElementById('hamburgerBtn').addEventListener('click',function(e){e.stopPropagation();openMenu();});
 </script></body></html>
