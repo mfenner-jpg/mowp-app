@@ -13,7 +13,7 @@ html{height:100%;overflow:hidden}
 body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:center;justify-content:center;font-family:'Lato',sans-serif}
 .app-shell{width:100%;max-width:430px;height:100dvh;display:flex;flex-direction:column;background:var(--cream);overflow:hidden;position:relative}
 @media(min-width:500px){body{background:#d0d0d0}.app-shell{width:390px;height:844px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.28)}}
-.top-nav{position:relative;z-index:100;background:var(--navy);flex-shrink:0;padding:env(safe-area-inset-top,10px) 14px 10px;display:flex;align-items:center;gap:10px;min-height:66px}
+.top-nav{position:relative;z-index:100;background:var(--navy);padding:env(safe-area-inset-top,10px) 14px 10px;display:flex;align-items:center;gap:10px;min-height:66px;flex-shrink:0}
 .nav-logo{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.40);flex-shrink:0}
 .nav-brand{flex:1}
 .nav-brand-name{font-family:'Lato',sans-serif;font-size:15px;font-weight:900;color:var(--white);line-height:1.2;letter-spacing:0.01em}
@@ -22,15 +22,19 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 .back-btn:active{background:rgba(255,255,255,0.32)}
 .ham{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px;flex-shrink:0}
 .ham span{display:block;width:22px;height:2.5px;background:var(--white);border-radius:2px}
+/* SCROLL — flex:1, hero is first child inside here */
+.scroll-content{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(26,58,92,0.20) transparent}
+.scroll-content::-webkit-scrollbar{width:3px}
+.scroll-content::-webkit-scrollbar-thumb{background:rgba(26,58,92,0.20);border-radius:2px}
+/* HERO — no flex-shrink, no position:fixed, sits inside scroll-content */
 .hero{position:relative;height:200px;overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,#2e5a8c 60%,var(--green) 100%)}
 .hero img{width:100%;height:100%;object-fit:cover;display:block}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(26,58,92,0.80) 0%,rgba(26,58,92,0.25) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
 .hero-label{font-family:'Lato',sans-serif;font-size:11px;font-weight:900;letter-spacing:0.09em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .hero-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--white);line-height:1.15}
 .hero-sub{font-family:'Lato',sans-serif;font-size:13px;color:rgba(255,255,255,0.85);margin-top:4px}
-.scroll-content{flex:1;padding:20px 16px 90px;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(26,58,92,0.20) transparent}
-.scroll-content::-webkit-scrollbar{width:3px}
-.scroll-content::-webkit-scrollbar-thumb{background:rgba(26,58,92,0.20);border-radius:2px}
+/* PAGE CONTENT */
+.page-content{padding:20px 16px 90px}
 .quote-card{background:var(--white);border-radius:14px;border-left:4px solid var(--gold);padding:16px 16px 16px 18px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
 .quote-card .q{font-family:'Playfair Display',serif;font-size:13.5px;line-height:1.7;color:var(--navy);font-style:italic}
 .quote-card .attr{font-family:'Lato',sans-serif;font-size:11px;font-weight:700;color:var(--gold);margin-top:8px;text-transform:uppercase;letter-spacing:0.06em}
@@ -46,46 +50,20 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 .text-card h3{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--navy);margin-bottom:8px}
 .text-card p{font-family:'Lato',sans-serif;font-size:13.5px;line-height:1.65;color:#444}
 .text-card p+p{margin-top:9px}
-
-/* TIMELINE */
 .tl{list-style:none;margin:0}
 .tl li{display:flex;gap:14px;margin-bottom:18px;align-items:center}
 .tl li:last-child{margin-bottom:0}
-
-/* Circle — image fills it completely */
-.tl-dot{
-  width:44px;min-width:44px;height:44px;
-  border-radius:50%;
-  overflow:hidden;
-  flex-shrink:0;
-  background:var(--navy);
-}
-.tl-dot img{
-  width:44px;
-  height:44px;
-  display:block;
-  object-fit:cover;
-}
-/* NOW dot — navy, no border */
-.tl-dot-now{
-  width:44px;min-width:44px;height:44px;
-  border-radius:50%;
-  background:var(--navy);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
+.tl-dot{width:44px;min-width:44px;height:44px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--navy)}
+.tl-dot img{width:44px;height:44px;display:block;object-fit:cover}
+.tl-dot-now{width:44px;min-width:44px;height:44px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .tl-dot-now span{font-family:'Lato',sans-serif;font-size:9px;font-weight:900;color:var(--gold);letter-spacing:0.05em}
 .tl-body{flex:1}
 .tl-year{font-family:'Lato',sans-serif;font-size:12px;font-weight:900;color:var(--gold);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px}
 .tl-text{font-family:'Lato',sans-serif;font-size:13px;line-height:1.6;color:#444}
-
-/* PILLARS */
 .pillars{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
 .pillar{background:var(--white);border-radius:12px;padding:14px 12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);text-align:center}
 .pillar .pt{font-family:'Playfair Display',serif;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px}
 .pillar .ps{font-family:'Lato',sans-serif;font-size:11.5px;color:#666;line-height:1.4}
-
-/* BOTTOM NAV */
 .bottom-nav{width:100%;height:62px;background:var(--white);display:flex;align-items:stretch;border-top:1px solid #e0e0e0;box-shadow:0 -2px 12px rgba(0,0,0,0.10);flex-shrink:0}
 .nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#888;text-decoration:none;font-family:'Lato',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.04em;gap:3px;border:none;background:none;cursor:pointer}
 .nav-tab .ico{font-size:20px;line-height:1}
@@ -104,110 +82,109 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
     <button class="back-btn" onclick="history.back()">&#8592; Back</button>
     <button class="ham" onclick="window.location='index.html'"><span></span><span></span><span></span></button>
   </nav>
-<div class="hero-title">Our Mission &amp; History</div>
-      <div class="hero-sub">Proudly serving East Pasco for 50+ years</div>
-    </div>
-  </div>
 
   <div class="scroll-content">
-<div class="hero">
-    <img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/internal_page_header/public/2025-11/About%20Us%20Hand%20Ver%202.jpg?h=c57fa6b7&itok=J8KPgTAV" alt="Mission" onerror="this.style.display='none'">
-    <div class="hero-overlay">
-      <div class="hero-label">Since 1974</div>
 
-    <div class="quote-card">
-      <div class="q">"Inspired by a community of residents who saw a need and took action, our mission is to strengthen lives and communities by reducing hunger and isolation through nutritious meals, food pantry support, and programs that promote growth, dignity, and health for all."</div>
-      <div class="attr">— Meals on Wheels Pasco Mission Statement</div>
+    <!-- HERO is first child inside scroll-content so it scrolls naturally -->
+    <div class="hero">
+      <img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/internal_page_header/public/2025-11/About%20Us%20Hand%20Ver%202.jpg?h=c57fa6b7&itok=J8KPgTAV" alt="Mission" onerror="this.style.display='none'">
+      <div class="hero-overlay">
+        <div class="hero-label">Since 1974</div>
+        <div class="hero-title">Our Mission &amp; History</div>
+        <div class="hero-sub">Proudly serving East Pasco for 50+ years</div>
+      </div>
     </div>
 
-    <div class="stat-bar">
-      <div class="stat"><div class="num">50+</div><div class="lbl">Years Serving</div></div>
-      <div class="stat-div"></div>
-      <div class="stat"><div class="num">1,000+</div><div class="lbl">Neighbors/Week</div></div>
-      <div class="stat-div"></div>
-      <div class="stat"><div class="num">80+</div><div class="lbl">Volunteers</div></div>
-    </div>
+    <!-- ALL PAGE CONTENT inside page-content div -->
+    <div class="page-content">
 
-    <div class="section-label">How It All Began</div>
-    <div class="text-card">
-      <h3>A Community Saw a Need</h3>
-      <p>Every great mission begins with a moment of recognition. For Meals on Wheels Pasco, that moment came when a group of compassionate local residents recognized a quiet, growing challenge: our elderly and homebound neighbors were struggling to maintain their independence simply because they lacked regular, nutritious meals.</p>
-      <p>On <strong>February 21, 1974</strong>, East Pasco Meals on Wheels, Inc. was officially founded to answer that call. What began as a modest, grassroots movement has grown into a lifeline for the eastern portion of the county.</p>
-    </div>
+      <div class="quote-card">
+        <div class="q">"Inspired by a community of residents who saw a need and took action, our mission is to strengthen lives and communities by reducing hunger and isolation through nutritious meals, food pantry support, and programs that promote growth, dignity, and health for all."</div>
+        <div class="attr">— Meals on Wheels Pasco Mission Statement</div>
+      </div>
 
-    <div class="dot-divider"><span></span></div>
-    <div class="section-label">Our Journey</div>
+      <div class="stat-bar">
+        <div class="stat"><div class="num">50+</div><div class="lbl">Years Serving</div></div>
+        <div class="stat-div"></div>
+        <div class="stat"><div class="num">1,000+</div><div class="lbl">Neighbors/Week</div></div>
+        <div class="stat-div"></div>
+        <div class="stat"><div class="num">80+</div><div class="lbl">Volunteers</div></div>
+      </div>
 
-    <div class="text-card" style="border-left-color:var(--navy)">
-      <ul class="tl">
+      <div class="section-label">How It All Began</div>
+      <div class="text-card">
+        <h3>A Community Saw a Need</h3>
+        <p>Every great mission begins with a moment of recognition. For Meals on Wheels Pasco, that moment came when a group of compassionate local residents recognized a quiet, growing challenge: our elderly and homebound neighbors were struggling to maintain their independence simply because they lacked regular, nutritious meals.</p>
+        <p>On <strong>February 21, 1974</strong>, East Pasco Meals on Wheels, Inc. was officially founded to answer that call. What began as a modest, grassroots movement has grown into a lifeline for the eastern portion of the county.</p>
+      </div>
 
-        <li>
-          <div class="tl-dot"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAIAAAC1JZyVAAAIJElEQVR42pVXeUyTyxafbym0JRRDWERlM+QJikEE076KCcoqGsAFk3oNFI24RENASAXc8nwJiU9JvI9G0csisuVKJGgQN4wI2McW7iu2FSqRQCkFZGkpLd2+eX8M77O3l4u580/zzZyZ3zkzv/M7pxiEEKw5KIqCEBIEseqqzWbDMAzH8bUPwdaAoSgKwzAMw9Dn9PT07OysXq/HMIzNZnt4eHh5eaElCCGEcA2w1WHst3V3d3d2dqrVapIk2Ww2k8nEMMxkMmm1WgCAj49PVFQUl8v9o1s/gIEQItP29vampiYOh7Nnzx4ul8vhcBws5+bment7Ozo6FhcXDx06FB0djcD+GJYjDDIyGAzFxcUmk+nkyZPBwcEAgMnJSW9v77a2NhaLtbi4GB8fr9FoPDw8nJ2dAQAKhaKqqookycLCQhcXl1WQoN1Ar61SqYRC4ZMnT9Ck2Wx+9eqVQCC4f/9+Xl4ej8e7cuUKhLCqqurixYvV1dUfP35Elo2Njenp6aOjoxBCm81mfzLucFdTU1MikejcuXNHjx6VyWQdHR0MBqO3t3f//v2jo6POzs67du2amJgAAMhkMolEUllZqVKpWlpatFrtkSNHLly4UFBQMDExgeO4/T0RN27coGEsFkt+fv7Zs2e5XK7JZBKJRAqFws3NLSEhob6+PiwsLC0tLSEhgc/nczgcJyen0NBQi8WycePGmpoaq9UKIYyMjPT3979161Z8fDzKAfTMK29js9kIgigpKXF3dxcKhePj476+vl++fCkuLmaxWKWlpX/GVIPB0NDQMDo6qlarU1JS5ufn09PT6+rqxsbGLl++jI5diQZd1/DwcGtra1FREQDg9evXL1++9PT0dHNzy8zMZLPZFEX9jjkYhuhLkuTOnTspirJYLPX19a6urnw+f8eOHQ0NDb6+vuvXr0dmOM33uro6gUBAUVRXV9f27dutVmtZWZlAIPD29sYwjCAIzG4AABCXMAyzWq0xMTFGozEtLS0lJUUsFlutVqFQWF9fT7uFIyGZmpqan5+PiorCcfz+/fvp6elLS0vl5eUAAKvVSvuOqIg4ieJDWWyz2QoKCgiCyM3NlclkKpUqMjJSr9ePj48jLuDIurOzMzQ0FMOw+fn5u3fvBgYGZmRkILEiSZL2HcdxFA2O43Q0OI5TFMVgMAICAo4dO5aamtrT0wMhjIiI+PDhw0ouoqAUCkVERITZbM7Ozn727FliYiKLxQIAtLS0pKSkDCuVP//759Dt2wuLCrs+dsXFxSUnJwsEAoPBMDQ0lJSUpFKpIIT79u1TKBTv379ft24dhmHh4eFKpXLl0pBTOp3O19cXw7CwsLDGxkalUrlhwwabzfa4pkbS/Z9fn/xa9uBBbW1tl0TS3Nyck5Pj7+/f09PDZrOzsrI8PT0DAwOtVisAICIiIicnJy4uDgDg5+en1+vRo+BIBy0Wi7u7+/z8/OLi4pYtW5A6QQh/efgwNDSUyWQCAH7772+m5eUtf9uSlJQ0OzublZXV2tpKUVR4ePjjx48ZDAYAwNXVtaSkJCkpqa2tzc3NjaKopaUlAAAOADCbzYg8HA5neXlZKpVyuVwIIUmSTCZTu7Cw++/8O/+6/c9/3DQuGX468ZNarZZIJImJiSKRiMFgPH36tKKiQq/XAwCcnJxUKlVMTAyLxUJ0N5lMAAASAECSJCKMVquVy+UMBkMul/N4PEQqg95gsVhiY2OZTObVq1eZzszy8nI/P7+tW7fm5ubqdDqULgRBUBR14MCB2NhYpKeInChKgNiZn58/NzdnMpnGx8fHxsZmZ2dp4ra3t+t0Oo1G0/ryJZrp7u6Wy+W0LA4NDY2MjNDKS9Ndp9Pl5uYiEQLo5/r161KpFP7FYbVaLRaLwyRFUUieh4aGCgsLkVqvEHrz5s2fPn1CO5G1fbVHMzabja5JKNsIgiBJkv6kdQjZDw4OBgQE0CmMAwD4fP7AwADKNftCS+MhvfmeBP+vWuhEh8KMTujv7+fz+SspjCQkKCgIQiiXy9Gn/QakZg4h2gMgA4dGZWRkxGg0btu2DVXS72UtNTW1urqahkGnaLVasVhsNBqRgwiJBsAwTKPR1NbWLiws0KGjpcrKyuTk5O/SiS6Boqjdu3djGPb27VuSJNELYRh2586dN2/elJaWzszMfP36FSEhAKVS+e3bt5s3b0ql0qKiIqPRiHSWIIiOjg6j0bh37166KcDt68elS5dQ0UVy2dfX19fXFxgY6Onpef78+aampv7+/uPHj7e1tdXU1IhEohcvXmi12mvXrul0uomJCZTR09PTZWVleXl5v3szmoiIUQMDAydOnNBoNBBCjUazsLCg0+mys7ODg4Pv3bvX2tp6+PDh5uZmoVCoUqlkMll1dXVqampJScny8jKEcG5uLiMjQyKROHQdmAN3CYKQSCRisTg/Pz8sLAw1mz09PSaTaWRkJDw8vKKiIigoiMfjPXr0yMvL6/bt2wRBoFT//PlzcXFxZmZmdHQ0XZ5XaaDovBkeHj59+rRYLDYYDPSS0WhUKpUPHz5UKpXIBgkwarIqKipOnTo1ODhon3yrR2Mfk81me/DgwcDAAI/Hi4mJ8ff3X7XlUKvV79696+rqCgkJOXPmjLOzs2Mca/TQNENmZmaeP38ulUoZDMamTZu8vb1dXFxwHNfr9RqNZnJy0mw2h4SEHDx40MfH58862x/8I7D3a2xsTKlUqtVqVD9cXFx8fHyCgoKQnDgY/zUYWr+RAq3hzdoGP4ZxwKNTne6h1j6dHv8D6vK77vQJkx8AAAAASUVORK5CYII=" alt="1974"></div>
-          <div class="tl-body">
-            <div class="tl-year">1974 — Founded</div>
-            <div class="tl-text">On February 21, 1974, East Pasco Meals on Wheels, Inc. was officially founded to answer that call. What began as a modest, grassroots movement has grown into a lifeline for the eastern portion of the county.</div>
-          </div>
-        </li>
+      <div class="dot-divider"><span></span></div>
+      <div class="section-label">Our Journey</div>
 
-        <li>
-          <div class="tl-dot"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAIAAAC1JZyVAAAL9ElEQVR42n1XaVSUR7p+61t6h6ahaVabVQIY0VEh0QhOYDLgbtBkTDQxnMlNTCZj9BgxmjHeOx4N6s1V40ycTHSUYCbLBHVcMi5ojEsMOIIsgoCsNg3dLTT0/i31vfcH3pxk5pz7/KqqU/U85606563nIbIsw/+BEPLDmCqUJYRhOQBqcwe7HL4hd8AdlEVKCaCa4yM0qoRITXK0PiFSB8AolMqILAOAAED+hY0gIvwUCAAIhIBA5e86XC22MYZhEyM0ZqMmPiosMkwjU3C5x0Z8AceINBJCURanWE25aUae8IgKIWRc5sf4QeYhuYLIEgIANXcGb3WPpFl0+dkJMWGq8d33e+7dqr9tMpnmFBaNr+z5n91z5i676xJto1JhTtKM5DAAUBAZ8hMl7scTBRWWMA/8wpHLnWaD5tWitAidxjFo37L7T0NDjnfeeefIJ5/6ff7e3t60jMy4+Hif13u76Q7Pqf5+7KvKL098cPL699aUlflJEVqeKsgy3L/LkHGNdofny2u9y2anZcXoAShV8FzNRZ/Xm52ZceJY9YTExLj4+Nra2mAoyALe6+yoOX9epVKlT8rZue0/fzY5Iz/3qT9caHvxiSRrVNhPakJERKQUEeUO59jOU60DI77Ou63bt+/o7+9HxLGxse073vuvXRXO0VHP6KjTNuCy2UPBACLW32l7q3xDc2OjOSpq2/btiHi55uyuPxyu+Ednr8uDiJSKiAoiEsTx18EHfvn9v9c/lUKKZuW9uXZdZ2enLIT27t+fnZUFihRsaPL09Mn+gFqnoYoSDAUZljMkWyNn59+zDx6rOlq+ccORysp9+z7YtP63+Quf+/Bs2/qF2WEangEkhCGIqCgIDNl9umXhlPij+7cHZHi7vLyq8kiI0t+sfiX0XV2ot0+bns6nJkUkJTY0Nmt02smPTAo4HZ67bWMdHZHJqdFzi+sbm44eObzk6dIdFbvOfn2q3ub5tql/3bxHFYUyDAuSIiPi6fr+L2u7ETEUEj6pOlq26qWBBy7F5+098PHAP87KkuT0jm3dvr3jXvvrr79WffyYIIkBSUJEWZaGampa93zgdw4FJfmlshdbmppv1TdIYqDqu55LLXZEpAoyLBBPUGzqHymdYd22bduzzy5TZOnNt9aHUdr950OmoifjS4pZjrN1dl86e7a2oY3wWqdruGxV2S8K5siixLJcTFFR4tOL7Ef/FnLYP/zoz0f/enTjxvLf/W7rkmlx33e7QxIlAAwhzJU2x4yJsYwiq3mV2Ww5fvJkRlqqq/pU3NLF4RPTbnY4P7ned7ErEGaMnJg5yScqQMV7bY1GAy9Q+e7AcEgUw5KS4pctdlefYhC9Xn92ZqZKozWo1Y/EGm50uggBdsu7W8412RdMs/IsMzlnst/vW7LsGVNnNx8X7ZuYs/WzBgmV3JTI4tyJNscDfeq0S2dOuzQp/ITpP5v9yymZaRzIXzfaYoxaU4yZSjTQ3FJY9lJy4oT4hASWMBOTY2uaB/LSo5l7Tm+YQaMn0qbNm9/ZvDk2Pv7x7EeG2tvNBQUfnm7NTjW/WpSRYzW5PN5LNxoGHUOWKEPBo3EW3ts55Hvj005XiHly8oRDV3oBMXL24/7BATOnunD12+2/3/bWhg1sYFivU/ePeLlWuz/VbAiFgu3tHUilc5cvTWe5qJzJiDBlgq590AMAbUNjjCIXP5a1+qlHLx10xGulDIOwpMTawifc6nImRIc5R2UgQACMU6eO1N00GiNnznzcHwpGmGOSI10dA172yV+tnpoSHWsKmzt3rkFveP6557G1zZg7nTPoJiUa7R6prnNQS8fGJHXX3ZbI+PSDf/pwgjWR8Dp1uDk2KcXtDQQk7rVCK88BEIbR6b0NDVMXzec51WOzZrkfDAcocfoJBwz7wN53YMdHvEpjNIanJFmtBLkoE1UoA+QJS3DR86/qWSUhLUeb88uvml2Rj62wh00JCULrPwdvbFlG5MDOLWuMulJKKWGBjzByHNPf0XGj9nutVjPyYDh/3lKBj+UUwnJAh5xOVHDQ4UiKMqdZohmWV2SJ4biNm7f++leLVpX9esWKFVqPneeyc35e4pXEdGt49e61ry8vyp0x/Y21m1LTs7KzMhVKOZZl1VolEPp5USGLMHv2bHdIqfy2nQsFA5mzsubNLfni878hgHt4RIowjTdTAJAkUWMIDwsP51XqeZmGZ+enDY14tFqNhiWnfj9cXDwvIzMrKjJ8wHZ/UnYWICIAy5Cqqqpmu83tGq48fDB50lRA5FiWHfP6T586aYmxzM/LS4iKEmVKAFiWBYBNmzatX7/+yy++SEhIWLT4aVSUuEgjgALAPLfi+bKXX4mLizWZTHPmzAEAluMAQEact2hBqs2eEB+fkprq8Qscy5ADNfd+kROdHh0OAE3NzY23bwfcblavJwCIaDKZ7t+/b7PZ8vLygqGQWq0OBPyIgIhqtfr6tWsOh6OkpITn+YcNGJEGg1qj0WKxlJSUAECzbfRWzwPyVW2vJUI7K92sKEhliSqKXqcTBIEQwjDM2rVrCwsLS0tLN27cKIpCeLhx3bp1KhXPcTzHsgzLAsC4mxAEQavVIqIky2qVKhgM8ioVx7I1rYOijFxqbHjr/dH8DAsB5DUaAOjq6tq3b5/RaCwuLj537tzy5csBoLGxsbS09NChQwsWLLhw4YLL5Vq1atXevXunTJmycuXKffv2CYKwevXq6urqnp6eF154YdasWZIsE0LuD/vzM6KYzLhwpy8gUkoYIksSAFRWVqampvI8f/Xq1YKCgqysLARAxO7u7vfee09RFLvdXldX197eHgqFbt68efz48f7+/hdWrvzmm29aW1sXLly4d+9eAGAY6hFEb1BOsYQzWp6NMerre9wEgDAsAJSVlfX19YVCoZUvvpiVna3TaghAfkHB1nffLSws5DgOAIqKiqxW64wZMyzR0QX5+RMzMg4ePlxQUJCTk3Pm9Ony8g0IwDJ8bddwcrSOYziCCg56/FXXesrnP3r12pXWO3cNBr0syYQBDcMEREo0asnvU6vVQVEERJ1WSykFQggQQQipVGpVmE7y+ECSQaMmADKVOU7F86qlpUv2nGt/5cmJRr2aUEoZhjl6rTverCvMMPtDIkMIyzCcij9ffSLd5TDm5YZPnw6KgiJFRVGQjhsJZBhOrQECIw31zotXYGZuzhNPUFkWqUwlWa/VnGpxSqK0NDdJUZAhhCiIS3Ot19qcwwGq1+k0Gi0Q8nZ5+YHPP2s2GDQ2h6vqs2B7h4pVtDqNXq/X6nRanU7DcsLd9qG/fq7p7M95uWzfJ0cqKiocTqdGpTEYDHaf1NLrWjhtgqIoDEM4QgggatXcs49ZP7p47635E1Wcav8f/zg8Mrq4+Cl9XEJfsjVBFoWOrt7v61hepdFqKaAY9FFRMJpiIqZNPd/enna/f/G8Bb9ds0YXZlzzm9f8gvCXix0rC9JULPPQbo4bKJlSRLzSNlhxslmU6aCtv2LnTqfT2dBQP29u8YGDH9uHh0VRoG63t7s71H8fvR5Fkvqdgx29Pf/x8sufHq1yuVxXr15FRL8o7TjRXNflQkRZUZRx6zQuo6AiyRIiXr4ztO1E02iQSkFfV3fPzp273nxjzdkzXx87Vr1w0cLrdXWI6Bwdqfnmcn19/TPLlr6/531ELN+4SRAERBxw+7cdu13b6UBEmcoKKqggIjIPPScQjuWognOyYxZNm7D3TNO1vkBiQqw5wuDxjc2Y+XhklCVvRt70yZMB4Ob1Gx8fOGAMj0hPy6g5X+N2j760cnlI8J9tHPzLpc5nZqbkpVuoorAMS8Y/ux8u7QeIlCLKY0Hx4MV7//11R0Of2xPwIeL+PbvaWpqdjiGPZwwR395YLgmBK5cu7NldMebxNvR7Ks60VV7pDIgUESmlyk9p/zV4ICAqlGE4AOh3+a60udxByRyhTtBCelJMV1tTekpKZFRU7c1/mhOTvCJjGw4OjIZMOq5okiXeZBiPA4QQAgoA8//lm4fpQEGGIQDgCUltttGe4cDwmI9T6QRZQVlWa9UgC5E6PtminzQhQq9S//jIv+N/ARkshjV/9DWOAAAAAElFTkSuQmCC" alt="1978"></div>
-          <div class="tl-body">
-            <div class="tl-year">1978 — Growing Strong</div>
-            <div class="tl-text">Fifth Annual Meeting held at the Zephyrhills Community Building. Marking a pivotal transition from a startup initiative to a permanent community fixture, this year solidified our role as a primary lifeline for homebound residents throughout Pasco County.</div>
-          </div>
-        </li>
+      <div class="text-card" style="border-left-color:var(--navy)">
+        <ul class="tl">
+          <li>
+            <div class="tl-dot"><img src="data:image/png;base64,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" alt="1974"></div>
+            <div class="tl-body">
+              <div class="tl-year">1974 — Founded</div>
+              <div class="tl-text">On February 21, 1974, East Pasco Meals on Wheels, Inc. was officially founded to answer that call. What began as a modest, grassroots movement has grown into a lifeline for the eastern portion of the county.</div>
+            </div>
+          </li>
+          <li>
+            <div class="tl-dot"><img src="data:image/png;base64,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" alt="1978"></div>
+            <div class="tl-body">
+              <div class="tl-year">1978 — Growing Strong</div>
+              <div class="tl-text">Fifth Annual Meeting held at the Zephyrhills Community Building. Marking a pivotal transition from a startup initiative to a permanent community fixture, this year solidified our role as a primary lifeline for homebound residents throughout Pasco County.</div>
+            </div>
+          </li>
+          <li>
+            <div class="tl-dot"><img src="data:image/png;base64,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" alt="1983"></div>
+            <div class="tl-body">
+              <div class="tl-year">1983 — Foundation for the Future</div>
+              <div class="tl-text">East Pasco Meals on Wheels, Inc. incorporated as a 501(c)(3) nonprofit. Community-funded from day one — no government funding accepted.</div>
+            </div>
+          </li>
+          <li>
+            <div class="tl-dot"><img src="data:image/png;base64,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" alt="2021"></div>
+            <div class="tl-body">
+              <div class="tl-year">2021 — A New Chapter</div>
+              <div class="tl-text">On March 20, we celebrated the grand opening of the Genesis Community Center. More than just a kitchen, this expansion allowed us to offer local residents a place for social activities, wellness programs, and community connection.</div>
+            </div>
+          </li>
+          <li>
+            <div class="tl-dot"><img src="data:image/png;base64,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" alt="2025"></div>
+            <div class="tl-body">
+              <div class="tl-year">2025 — Feeding the Heart of Pasco</div>
+              <div class="tl-text">The Feeding You With Love Food Pantry is created — serving any Pasco County resident in need, not just those on delivery routes.</div>
+            </div>
+          </li>
+          <li>
+            <div class="tl-dot-now"><span>NOW</span></div>
+            <div class="tl-body">
+              <div class="tl-year">Today — A Legacy of Service</div>
+              <div class="tl-text">Currently serving <strong>1,000+ neighbors every week</strong>, we deliver tens of thousands of meals annually across Pasco County. Our mission continues to evolve, ensuring that no resident is left behind and that every meal comes with a smile and a wellness check.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
 
-        <li>
-          <div class="tl-dot"><img src="data:image/png;base64,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" alt="1983"></div>
-          <div class="tl-body">
-            <div class="tl-year">1983 — Foundation for the Future</div>
-            <div class="tl-text">East Pasco Meals on Wheels, Inc. incorporated as a 501(c)(3) nonprofit. Community-funded from day one — no government funding accepted.</div>
-          </div>
-        </li>
+      <div class="dot-divider"><span></span></div>
+      <div class="section-label">Our Core Values</div>
+      <div class="pillars">
+        <div class="pillar"><div class="pt">Nourishment</div><div class="ps">Fresh, hot meals every weekday</div></div>
+        <div class="pillar"><div class="pt">Dignity</div><div class="ps">Respect for every person we serve</div></div>
+        <div class="pillar"><div class="pt">Community</div><div class="ps">Of the community, for the community</div></div>
+        <div class="pillar"><div class="pt">Independence</div><div class="ps">Supporting neighbors living at home</div></div>
+      </div>
 
-        <li>
-          <div class="tl-dot"><img src="data:image/png;base64,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" alt="2021"></div>
-          <div class="tl-body">
-            <div class="tl-year">2021 — A New Chapter</div>
-            <div class="tl-text">On March 20, we celebrated the grand opening of the Genesis Community Center. More than just a kitchen, this expansion allowed us to offer local residents a place for social activities, wellness programs, and community connection.</div>
-          </div>
-        </li>
+      <div class="text-card">
+        <h3>Our Unwavering Commitment</h3>
+        <p>From our inception, we established a bold and defining philosophy: we are a non-profit, community-funded organization. To this day, we maintain our independence by <strong>never accepting government funding.</strong></p>
+        <p>Our success is built entirely on the bedrock of local generosity — donations from small businesses, dedicated churches, community grants, and the tireless spirit of local volunteers.</p>
+      </div>
 
-        <li>
-          <div class="tl-dot"><img src="data:image/png;base64,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" alt="2025"></div>
-          <div class="tl-body">
-            <div class="tl-year">2025 — Feeding the Heart of Pasco</div>
-            <div class="tl-text">The Feeding You With Love Food Pantry is created — serving any Pasco County resident in need, not just those on delivery routes.</div>
-          </div>
-        </li>
-
-        <li>
-          <div class="tl-dot-now"><span>NOW</span></div>
-          <div class="tl-body">
-            <div class="tl-year">Today — A Legacy of Service</div>
-            <div class="tl-text">Currently serving <strong>1,000+ neighbors every week</strong>, we deliver tens of thousands of meals annually across Pasco County. Our mission continues to evolve, ensuring that no resident is left behind and that every meal comes with a smile and a wellness check.</div>
-          </div>
-        </li>
-
-      </ul>
-    </div>
-
-    <div class="dot-divider"><span></span></div>
-    <div class="section-label">Our Core Values</div>
-    <div class="pillars">
-      <div class="pillar"><div class="pt">Nourishment</div><div class="ps">Fresh, hot meals every weekday</div></div>
-      <div class="pillar"><div class="pt">Dignity</div><div class="ps">Respect for every person we serve</div></div>
-      <div class="pillar"><div class="pt">Community</div><div class="ps">Of the community, for the community</div></div>
-      <div class="pillar"><div class="pt">Independence</div><div class="ps">Supporting neighbors living at home</div></div>
-    </div>
-
-    <div class="text-card">
-      <h3>Our Unwavering Commitment</h3>
-      <p>From our inception, we established a bold and defining philosophy: we are a non-profit, community-funded organization. To this day, we maintain our independence by <strong>never accepting government funding.</strong></p>
-      <p>Our success is built entirely on the bedrock of local generosity — donations from small businesses, dedicated churches, community grants, and the tireless spirit of local volunteers.</p>
-    </div>
-
-  </div>
+    </div><!-- end page-content -->
+  </div><!-- end scroll-content -->
 
   <nav class="bottom-nav">
     <a class="nav-tab" href="index.html"><span class="ico">🏠</span>HOME</a>
