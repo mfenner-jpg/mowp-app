@@ -22,7 +22,7 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 .back-btn:active{background:rgba(255,255,255,0.32)}
 .ham{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px;flex-shrink:0}
 .ham span{display:block;width:22px;height:2.5px;background:var(--white);border-radius:2px}
-.hero{position:relative;height:200px;overflow:hidden;flex-shrink:0;background:linear-gradient(135deg,var(--navy) 0%,#2e5a8c 60%,var(--green) 100%)}
+.hero{position:relative;height:200px;overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,#2e5a8c 60%,var(--green) 100%)}
 .hero img{width:100%;height:100%;object-fit:cover;display:block}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(26,58,92,0.80) 0%,rgba(26,58,92,0.25) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
 .hero-label{font-family:'Lato',sans-serif;font-size:11px;font-weight:900;letter-spacing:0.09em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
@@ -104,17 +104,16 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
     <button class="back-btn" onclick="history.back()">&#8592; Back</button>
     <button class="ham" onclick="window.location='index.html'"><span></span><span></span><span></span></button>
   </nav>
-
-  <div class="hero">
-    <img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/internal_page_header/public/2025-11/About%20Us%20Hand%20Ver%202.jpg?h=c57fa6b7&itok=J8KPgTAV" alt="Mission" onerror="this.style.display='none'">
-    <div class="hero-overlay">
-      <div class="hero-label">Since 1974</div>
-      <div class="hero-title">Our Mission &amp; History</div>
+<div class="hero-title">Our Mission &amp; History</div>
       <div class="hero-sub">Proudly serving East Pasco for 50+ years</div>
     </div>
   </div>
 
   <div class="scroll-content">
+<div class="hero">
+    <img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/internal_page_header/public/2025-11/About%20Us%20Hand%20Ver%202.jpg?h=c57fa6b7&itok=J8KPgTAV" alt="Mission" onerror="this.style.display='none'">
+    <div class="hero-overlay">
+      <div class="hero-label">Since 1974</div>
 
     <div class="quote-card">
       <div class="q">"Inspired by a community of residents who saw a need and took action, our mission is to strengthen lives and communities by reducing hunger and isolation through nutritious meals, food pantry support, and programs that promote growth, dignity, and health for all."</div>
