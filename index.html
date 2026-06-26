@@ -8,12 +8,12 @@
 <meta name="apple-mobile-web-app-title" content="MOWP">
 <meta name="theme-color" content="#1a3a5c">
 <link rel="icon" type="image/png" href="favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-:root{--navy:#1a3a5c;--green:#2e7d32;--red:#c0392b;--gold:#c9a227;--cream:#faf7f2;--white:#fff;--border:#e0e0e0;--text-dark:#1a1a1a;--text-mid:#555;--shadow:0 2px 10px rgba(0,0,0,0.10);}
+:root{--navy:#1B3D6E;--green:#357D2B;--red:#c0392b;--gold:#ffc107;--cream:#faf7f2;--white:#fff;--border:#e0e0e0;--text-dark:#1a1a1a;--text-mid:#555;--shadow:0 2px 10px rgba(0,0,0,0.10);}
 html{height:100%;overflow:hidden;}
-body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:center;justify-content:center;font-family:'Lato',sans-serif;}
+body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:20px;line-height:1.9;}
 #app{width:100%;max-width:430px;height:100dvh;display:flex;flex-direction:column;background:var(--cream);overflow:hidden;position:relative;}
 @media(min-width:500px){body{background:#d0d0d0;}#app{width:390px;height:844px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.28);}}
 
@@ -52,12 +52,12 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 .hero-title{color:#fff;font-family:'Playfair Display',serif;font-size:24px;font-weight:700;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,0.45);}
 .hero-sub{color:rgba(255,255,255,0.92);font-size:12.5px;margin-top:4px;text-shadow:0 1px 4px rgba(0,0,0,0.4);line-height:1.4;}
 .text-card{background:#fff;margin:10px 16px;border-radius:14px;padding:13px 16px;box-shadow:var(--shadow);border-left:4px solid var(--green);}
-.text-card h3{color:var(--navy);font-family:'Playfair Display',serif;font-size:15px;margin-bottom:5px;}
-.text-card p{color:var(--text-dark);font-size:12.5px;line-height:1.55;}
-.divider{display:flex;align-items:center;gap:10px;margin:4px 16px;}
-.divider-line{flex:1;height:1px;background:var(--border);}
-.divider-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;}
-.section-label{font-family:'Lato',sans-serif;font-size:11px;font-weight:900;color:var(--navy);text-transform:uppercase;letter-spacing:0.09em;padding:8px 16px 6px;}
+.text-card h3{color:var(--navy);font-family:'Trebuchet MS',sans-serif;font-size:22px;font-weight:700;margin-bottom:5px;}
+.text-card p{color:var(--text-dark);font-family:Georgia,serif;font-size:18px;line-height:1.9;}
+.divider{display:flex;align-items:center;gap:0;margin:16px 16px;}
+.divider-line{flex:1;height:2px;background:#cccccc;}
+.divider-dots{display:inline-flex;gap:6px;padding:0 14px;margin-top:-6px;}.divider-dot-navy{width:10px;height:10px;border-radius:50%;background:#1B3D6E;display:inline-block;}.divider-dot-gold{width:10px;height:10px;border-radius:50%;background:#ffc107;display:inline-block;}
+.section-label{font-family:'Trebuchet MS',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:2px;padding:8px 16px 6px;}
 .action-buttons{padding:0 16px;display:flex;flex-direction:column;gap:8px;}
 .action-btn{display:block;position:relative;height:90px;border-radius:14px;overflow:hidden;text-decoration:none;box-shadow:var(--shadow);transition:transform 0.15s;}
 .action-btn:active{transform:scale(0.98);}
@@ -65,7 +65,7 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 .action-btn-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0.28) 0%,rgba(0,0,0,0.10) 100%);}
 .action-btn-content{position:absolute;inset:0;display:flex;align-items:center;padding:0 18px;}
 .ab-text{flex:1;}
-.ab-title{font-family:'Lato',sans-serif;font-size:15px;font-weight:900;color:#fff;line-height:1.2;text-shadow:0 1px 6px rgba(0,0,0,0.45);}
+.ab-title{font-family:'Trebuchet MS',sans-serif;font-size:15px;font-weight:700;color:#fff;line-height:1.2;text-shadow:0 1px 6px rgba(0,0,0,0.45);}
 .ab-sub{font-size:11px;color:rgba(255,255,255,0.88);margin-top:3px;line-height:1.3;text-shadow:0 1px 4px rgba(0,0,0,0.35);}
 .ab-arrow{width:32px;height:32px;flex-shrink:0;background:rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:900;}
 .bottom-space{height:8px;}
@@ -78,6 +78,7 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
   align-items:center;
   flex-shrink:0;
   height:62px;
+  padding-bottom:env(safe-area-inset-bottom,0px);
 }
 .bnav-item{
   flex:1;
@@ -94,7 +95,7 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
   text-align:center;
 }
 .bnav-icon{font-size:20px;line-height:1;}
-.bnav-label{font-size:10px;font-weight:700;color:#999;font-family:'Lato',sans-serif;letter-spacing:.3px;}
+.bnav-label{font-size:10px;font-weight:700;color:#999;font-family:'Trebuchet MS',sans-serif;letter-spacing:1px;}
 .bnav-item.active .bnav-label{color:var(--navy);}
 .bnav-donate.active .bnav-label{color:var(--red);}
 
@@ -107,15 +108,15 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 #menuHeader span{color:#fff;font-family:'Lato',sans-serif;font-size:16px;font-weight:900;letter-spacing:1px;text-transform:uppercase;}
 #menuClose{background:rgba(255,255,255,0.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer;}
 #menuBody{flex:1;overflow-y:auto;padding:8px 0;}
-.menu-item{display:flex;align-items:center;padding:14px 20px;font-family:'Lato',sans-serif;font-size:14px;font-weight:700;color:#1a3a5c;text-decoration:none;border-bottom:1px solid #f0f0f0;gap:10px;}
+.menu-item{display:flex;align-items:center;padding:14px 20px;font-family:'Trebuchet MS',sans-serif;font-size:14px;font-weight:700;color:var(--navy);text-decoration:none;border-bottom:1px solid #f0f0f0;gap:10px;}
 .donate-item{background:#c0392b;color:#fff;margin:12px 16px;border-radius:12px;justify-content:center;font-size:15px;}
 .menu-group{border-bottom:1px solid #f0f0f0;}
-.menu-group-title{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;font-family:'Lato',sans-serif;font-size:14px;font-weight:700;color:#1a3a5c;}
+.menu-group-title{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;font-family:'Trebuchet MS',sans-serif;font-size:14px;font-weight:700;color:var(--navy);}
 .chevron{font-size:18px;transition:transform 0.2s;color:#c9a227;}
 .menu-group-title.open .chevron{transform:rotate(90deg);}
 .menu-sub{display:none;background:#f9f9f9;}
 .menu-sub.open{display:block;}
-.menu-sub-item{display:block;padding:11px 20px 11px 36px;font-family:'Lato',sans-serif;font-size:13px;font-weight:600;color:#555;text-decoration:none;border-bottom:1px solid #efefef;}
+.menu-sub-item{display:block;padding:11px 20px 11px 36px;font-family:Georgia,serif;font-size:13px;font-weight:600;color:#555;text-decoration:none;border-bottom:1px solid #efefef;}
 
 /* CAROUSEL */
 .carousel{position:relative;overflow:hidden;flex-shrink:0;}
@@ -123,7 +124,7 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 .carousel-slide{min-width:100%;position:relative;height:220px;overflow:hidden;cursor:pointer;}
 .carousel-slide img{width:100%;height:100%;object-fit:cover;}
 .carousel-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 60%);display:flex;align-items:flex-end;padding:16px 18px;}
-.carousel-overlay h2{color:#fff;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;text-shadow:0 2px 6px rgba(0,0,0,0.5);line-height:1.2;}
+.carousel-overlay h2{color:#fff;font-family:'Trebuchet MS',sans-serif;font-size:22px;font-weight:700;text-shadow:0 2px 6px rgba(0,0,0,0.5);line-height:1.2;}
 .carousel-overlay p{color:rgba(255,255,255,0.88);font-size:11.5px;margin-top:3px;}
 .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.25);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .carousel-btn.prev{left:10px;}.carousel-btn.next{right:10px;}
@@ -132,22 +133,22 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 .dot.active{background:#fff;}
 
 /* HOW CAN WE HELP */
-.how-header{padding:14px 16px 8px;font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--navy);}
-.focus-cards-wrap{overflow-x:auto;padding:0 16px 12px;scrollbar-width:none;}
-.focus-cards-wrap::-webkit-scrollbar{display:none;}
-.focus-cards{display:flex;gap:10px;width:max-content;}
-.focus-card{width:120px;background:#fff;border-radius:14px;padding:14px 10px 12px;box-shadow:var(--shadow);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.how-header{padding:14px 16px 8px;font-family:'Trebuchet MS',sans-serif;font-size:22px;font-weight:700;color:var(--navy);}
+.focus-cards-wrap{padding:0 16px 12px;}
+
+.focus-cards{display:flex;gap:8px;width:100%;}
+.focus-card{flex:1;min-width:0;background:#fff;border-radius:14px;padding:14px 10px 12px;box-shadow:var(--shadow);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;}
 .focus-card img{width:56px;height:56px;object-fit:contain;}
-.focus-card-title{font-size:11px;font-weight:900;color:var(--navy);text-align:center;line-height:1.3;}
-.focus-card-sub{font-size:10px;color:var(--text-mid);text-align:center;line-height:1.3;}
-.focus-card-btn{background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:5px 10px;border-radius:20px;margin-top:2px;white-space:nowrap;}
+.focus-card-title{font-family:'Trebuchet MS',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:center;line-height:1.3;}
+.focus-card-sub{font-family:Georgia,serif;font-size:11px;color:var(--text-mid);text-align:center;line-height:1.4;}
+.focus-card-btn{background:var(--green);color:#fff;font-family:'Trebuchet MS',sans-serif;font-size:11px;font-weight:700;padding:6px 12px;border-radius:8px;margin-top:2px;white-space:nowrap;}
 
 /* PROMO BANNERS */
 .promo-banner{margin:0 16px 10px;border-radius:14px;overflow:hidden;position:relative;height:90px;box-shadow:var(--shadow);text-decoration:none;display:block;}
 .promo-banner img{width:100%;height:100%;object-fit:cover;object-position:center center;}
 .promo-banner-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0.10) 0%,rgba(0,0,0,0.03) 100%);display:flex;flex-direction:column;justify-content:center;padding:0 16px;}
-.promo-banner-overlay h3{color:#fff;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;}
-.promo-banner-overlay p{color:rgba(255,255,255,0.88);font-size:11px;margin-top:2px;}
+.promo-banner-overlay h3{color:#fff;font-family:'Trebuchet MS',sans-serif;font-size:16px;font-weight:700;}
+.promo-banner-overlay p{color:rgba(255,255,255,0.88);font-family:Georgia,serif;font-size:12px;margin-top:2px;}
 .events-banner img{object-position:center 20%;}
 
 
@@ -296,7 +297,7 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
   </div></div>
 
   <!-- EXPLORE PROMO BANNERS -->
-  <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+  <div class="divider"><div class="divider-line"></div><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div><div class="divider-line"></div></div>
   <div class="section-label">Explore</div>
   <a class="promo-banner" href="mowp_getmeals.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/Front%20Promo%20Banner%20Ver%202.jpg?h=f0d95172&itok=LOnFK75c"><div class="promo-banner-overlay"><h3>Get Meals!</h3><p>Fresh, hot meals delivered daily right to you.</p></div></a>
   <a class="promo-banner" href="mowp_givehope.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/2026-03/Feeding%20Heart%20Red%20850x850.jpg?h=6a4a5c49&itok=6g32qOpq"><div class="promo-banner-overlay"><h3>Give Hope in Pasco</h3><p>Your donation changes a life in East Pasco.</p></div></a>
@@ -304,7 +305,7 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 
   
   <!-- DIVIDER -->
-  <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+  <div class="divider"><div class="divider-line"></div><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div><div class="divider-line"></div></div>
 
   <!-- UPCOMING EVENTS — update dates/times to match your Drupal calendar -->
   <div class="section-header-block white-bg">Upcoming Events</div>
