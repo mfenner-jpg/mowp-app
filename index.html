@@ -25,14 +25,14 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
   justify-content:space-between;
   padding:0 14px;
   padding-top:env(safe-area-inset-top);
-  height:calc(62px + env(safe-area-inset-top));
+  height:calc(68px + env(safe-area-inset-top));
   flex-shrink:0;
   z-index:100;
 }
 .logo-wrap{display:flex;align-items:center;gap:9px;}
 
 /* Logo: blue-background image, no white circle */
-.logo-img{width:52px;height:52px;border-radius:50%;object-fit:cover;display:block;}
+.logo-img{width:58px;height:58px;border-radius:50%;object-fit:cover;display:block;border:2px solid rgba(255,255,255,0.15);}
 
 .logo-text{color:#fff;font-size:16px;font-weight:900;line-height:1.25;}
 .logo-text span{display:block;font-size:12px;font-weight:400;opacity:.8;}
@@ -75,9 +75,9 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
   background:#fff;
   border-top:1px solid #e4e4e4;
   display:flex;
-  align-items:center;
+  align-items:stretch;
   flex-shrink:0;
-  height:62px;
+  height:calc(62px + env(safe-area-inset-bottom,0px));
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
 .bnav-item{
@@ -85,12 +85,12 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
+  justify-content:flex-start;
+  padding-top:10px;
   gap:3px;
   background:none;
   border:none;
   cursor:pointer;
-  padding:10px 0 8px;
   text-decoration:none;
   text-align:center;
 }
@@ -137,10 +137,10 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 .focus-cards-wrap{padding:0 16px 12px;}
 
 .focus-cards{display:flex;gap:8px;width:100%;}
-.focus-card{flex:1;min-width:0;background:#fff;border-radius:14px;padding:14px 10px 12px;box-shadow:var(--shadow);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.focus-card{flex:1;min-width:0;background:#fff;border-radius:14px;padding:14px 10px 12px;box-shadow:var(--shadow);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;align-self:stretch;}
 .focus-card img{width:56px;height:56px;object-fit:contain;}
 .focus-card-title{font-family:'Trebuchet MS',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:center;line-height:1.3;}
-.focus-card-sub{font-family:Georgia,serif;font-size:11px;color:var(--text-mid);text-align:center;line-height:1.4;}
+.focus-card-sub{font-family:Georgia,serif;font-size:11px;color:var(--text-mid);text-align:center;line-height:1.4;flex:1;}
 .focus-card-btn{background:var(--green);color:#fff;font-family:'Trebuchet MS',sans-serif;font-size:11px;font-weight:700;padding:6px 12px;border-radius:8px;margin-top:2px;white-space:nowrap;}
 
 /* PROMO BANNERS */
@@ -177,6 +177,11 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
   font-size:13px; font-weight:700; padding:12px;
   text-decoration:none;
 }
+
+/* GOLD SINGLE DOT DIVIDER */
+.divider-single{display:flex;align-items:center;gap:0;margin:20px 16px;}
+.divider-single .divider-line{flex:1;height:2px;background:#cccccc;}
+.divider-single-dot{width:12px;height:12px;border-radius:50%;background:#ffc107;display:inline-block;margin:-7px 14px 0;vertical-align:top;}
 
 /* --- NEWS & BLOGS --- */
 .news-wrap { background:#f4f4f4; padding:0 14px 14px; }
@@ -300,7 +305,7 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
   <div class="divider"><div class="divider-line"></div><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div><div class="divider-line"></div></div>
   <div class="section-label">Explore</div>
   <a class="promo-banner" href="mowp_getmeals.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/Front%20Promo%20Banner%20Ver%202.jpg?h=f0d95172&itok=LOnFK75c"><div class="promo-banner-overlay"><h3>Get Meals!</h3><p>Fresh, hot meals delivered daily right to you.</p></div></a>
-  <a class="promo-banner" href="mowp_givehope.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/2026-03/Feeding%20Heart%20Red%20850x850.jpg?h=6a4a5c49&itok=6g32qOpq"><div class="promo-banner-overlay"><h3>Give Hope in Pasco</h3><p>Your donation changes a life in East Pasco.</p></div></a>
+  <a class="promo-banner" href="mowp_programs.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/2026-03/Feeding%20Heart%20Red%20850x850.jpg?h=6a4a5c49&itok=6g32qOpq"><div class="promo-banner-overlay"><h3>Feeding You With Love Food Pantry</h3><p>Nourishing our community, one meal at a time.</p></div></a>
   <a class="promo-banner events-banner" href="mowp_events.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/2026-06/Events%20Promo%20Banner.jpg?h=6a4a5c49&itok=XoJKa4p5"><div class="promo-banner-overlay"><h3>Upcoming Events</h3><p>See what's happening in our community.</p></div></a>
 
   
@@ -341,6 +346,9 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
     <a class="view-all-link" href="https://www.mealsonwheelspasco.org/calendar" target="_blank">View All Events &rarr;</a>
   </div>
 
+  <!-- SINGLE DOT DIVIDER -->
+  <div class="divider-single"><div class="divider-line"></div><div class="divider-single-dot"></div><div class="divider-line"></div></div>
+
   <!-- NEWS & BLOGS — pulled from mowp_news.html -->
   <div class="section-header-block">News &amp; Blogs</div>
   <div class="news-wrap">
@@ -365,6 +373,8 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
     <a class="view-all-link" href="mowp_news.html" style="color:var(--navy);">View All News &amp; Blogs &rarr;</a>
   </div>
 
+  <!-- TRIPLE DOT DIVIDER — end of page -->
+  <div class="divider" style="margin:20px 16px 24px;"><div class="divider-line"></div><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div><div class="divider-line"></div></div>
 
 </div>
 
