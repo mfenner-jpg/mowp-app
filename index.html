@@ -32,10 +32,10 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 .logo-wrap{display:flex;align-items:center;gap:9px;}
 
 /* Logo: blue-background image, no white circle */
-.logo-img{width:46px;height:46px;border-radius:50%;object-fit:cover;display:block;}
+.logo-img{width:52px;height:52px;border-radius:50%;object-fit:cover;display:block;}
 
-.logo-text{color:#fff;font-size:13px;font-weight:700;line-height:1.25;}
-.logo-text span{display:block;font-size:10px;font-weight:400;opacity:.8;}
+.logo-text{color:#fff;font-size:16px;font-weight:900;line-height:1.25;}
+.logo-text span{display:block;font-size:12px;font-weight:400;opacity:.8;}
 .nav-right{display:flex;align-items:center;gap:8px;}
 .back-btn{background:rgba(255,255,255,0.15);border:none;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;}
 
@@ -136,16 +136,16 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
 .focus-cards-wrap{overflow-x:auto;padding:0 16px 12px;scrollbar-width:none;}
 .focus-cards-wrap::-webkit-scrollbar{display:none;}
 .focus-cards{display:flex;gap:10px;width:max-content;}
-.focus-card{width:110px;background:#fff;border-radius:14px;padding:14px 10px 12px;box-shadow:var(--shadow);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.focus-card{width:120px;background:#fff;border-radius:14px;padding:14px 10px 12px;box-shadow:var(--shadow);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;}
 .focus-card img{width:56px;height:56px;object-fit:contain;}
 .focus-card-title{font-size:11px;font-weight:900;color:var(--navy);text-align:center;line-height:1.3;}
 .focus-card-sub{font-size:10px;color:var(--text-mid);text-align:center;line-height:1.3;}
-.focus-card-btn{background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:5px 10px;border-radius:20px;margin-top:2px;}
+.focus-card-btn{background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:5px 10px;border-radius:20px;margin-top:2px;white-space:nowrap;}
 
 /* PROMO BANNERS */
 .promo-banner{margin:0 16px 10px;border-radius:14px;overflow:hidden;position:relative;height:90px;box-shadow:var(--shadow);text-decoration:none;display:block;}
 .promo-banner img{width:100%;height:100%;object-fit:cover;object-position:center center;}
-.promo-banner-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,58,92,0.60) 0%,rgba(26,58,92,0.15) 100%);display:flex;flex-direction:column;justify-content:center;padding:0 16px;}
+.promo-banner-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0.10) 0%,rgba(0,0,0,0.03) 100%);display:flex;flex-direction:column;justify-content:center;padding:0 16px;}
 .promo-banner-overlay h3{color:#fff;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;}
 .promo-banner-overlay p{color:rgba(255,255,255,0.88);font-size:11px;margin-top:2px;}
 .events-banner img{object-position:center 20%;}
@@ -223,6 +223,7 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
     <a class="menu-item" href="index.html">&#127968; Home</a>
     <div class="menu-group"><div class="menu-group-title" onclick="toggleGroup(this)"><span>&#8505; About Us</span><span class="chevron">&#8250;</span></div><div class="menu-sub">
       <a class="menu-sub-item" href="mowp_about.html">About Us Home</a>
+      <a class="menu-sub-item" href="mowp_about_whatwedo.html">What We Do</a>
       <a class="menu-sub-item" href="mowp_about_mission.html">Our Mission &amp; History</a>
       <a class="menu-sub-item" href="mowp_about_board.html">Board of Directors</a>
       <a class="menu-sub-item" href="mowp_about_team.html">Our Team</a>
@@ -271,10 +272,10 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
   <!-- CAROUSEL -->
   <div class="carousel" id="carousel">
     <div class="carousel-track" id="carouselTrack">
-      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/get-meals-0','_blank')"><img src="images/rotor1.jpg"><div class="carousel-overlay"><div><h2>Together, We Can Deliver</h2><p>Meals delivered to your home Monday through Friday.</p></div></div></div>
-      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/volunteer-opportunities','_blank')"><img src="images/rotor2.jpg"><div class="carousel-overlay"><div><h2>Pasco Runs on Heart</h2><p>Join our team and bring companionship home.</p></div></div></div>
-      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/amazon-wishlist-0','_blank')"><img src="images/rotor3.jpg"><div class="carousel-overlay"><div><h2>Amazon Wishlist</h2><p>Every item donated delivers kindness to seniors in need.</p></div></div></div>
-      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/our-programs','_blank')"><img src="images/rotor4.png"><div class="carousel-overlay"><div><h2>Discover Our Programs</h2><p>Explore the ways you can engage and assist those in need.</p></div></div></div>
+      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/get-meals-0','_blank')"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_rotor_image/public/2026-05/Rotor%20Image%203000x1000px.jpg?h=cfea4fea&itok=Jgw4iMc2"><div class="carousel-overlay"><div><h2>Together, We Can Deliver</h2><p>Meals delivered to your home Monday through Friday.</p></div></div></div>
+      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/volunteer-opportunities','_blank')"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_rotor_image/public/2026-06/Pasco%20Runs%20on%20Heart%20Ver4.jpg?h=cfea4fea&itok=wUm7OfrK"><div class="carousel-overlay"><div><h2>Pasco Runs on Heart</h2><p>Join our team and bring companionship home.</p></div></div></div>
+      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/amazon-wishlist-0','_blank')"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_rotor_image/public/2026-06/Amazon%20Rotor%20Image%20Ver%202.jpg?h=cfea4fea&itok=DfhYTgnL"><div class="carousel-overlay"><div><h2>Amazon Wishlist</h2><p>Every item donated delivers kindness to seniors in need.</p></div></div></div>
+      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/our-programs','_blank')"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_rotor_image/public/2025-12/Home%20Page%20Header%20Image%20Ver%201.png?h=849beab9&itok=gfUANMzk"><div class="carousel-overlay"><div><h2>Discover Our Programs</h2><p>Explore the ways you can engage and assist those in need.</p></div></div></div>
     </div>
     <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#8249;</button>
     <button class="carousel-btn next" onclick="moveCarousel(1)">&#8250;</button>
@@ -289,17 +290,17 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
   <!-- HOW CAN WE HELP -->
   <div class="how-header">How Can We Help?</div>
   <div class="focus-cards-wrap"><div class="focus-cards">
-    <a class="focus-card" href="mowp_givehope.html"><img src="images/icon_donate.png"><div class="focus-card-title">Donate</div><div class="focus-card-sub">Help nourish a local senior today</div><div class="focus-card-btn">Donate Today</div></a>
-    <a class="focus-card" href="mowp_getmeals.html"><img src="images/icon_meals.png"><div class="focus-card-title">Get Meals</div><div class="focus-card-sub">Hot entree, fruit &amp; dessert</div><div class="focus-card-btn">Sign Up</div></a>
-    <a class="focus-card" href="mowp_volunteer.html"><img src="images/icon_volunteer.png"><div class="focus-card-title">Volunteer</div><div class="focus-card-sub">Make a difference today</div><div class="focus-card-btn">Get Involved</div></a>
+    <a class="focus-card" href="mowp_givehope.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/focus_areas/public/2025-11/Donate%20Focus%20Icon%20-%20Ver%201_0.png?h=eb901320&itok=XJu1hpBa"><div class="focus-card-title">Donate</div><div class="focus-card-sub">Help nourish a local senior today</div><div class="focus-card-btn">Donate Today</div></a>
+    <a class="focus-card" href="mowp_getmeals.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/focus_areas/public/2025-11/Get%20Meals%20Icon%20-%20Ver%203.png?h=eb901320&itok=YzNrqjIJ"><div class="focus-card-title">Get Meals</div><div class="focus-card-sub">Hot entree, fruit &amp; dessert</div><div class="focus-card-btn">Sign Up</div></a>
+    <a class="focus-card" href="mowp_volunteer.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/focus_areas/public/2025-11/Volunteer%20Focus%20Ver%201.png?h=eb901320&itok=9MH561PQ"><div class="focus-card-title">Volunteer</div><div class="focus-card-sub">Make a difference today</div><div class="focus-card-btn">Get Involved</div></a>
   </div></div>
 
   <!-- EXPLORE PROMO BANNERS -->
   <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
   <div class="section-label">Explore</div>
-  <a class="promo-banner" href="mowp_getmeals.html"><img src="images/promo_meals.jpg"><div class="promo-banner-overlay"><h3>Get Meals!</h3><p>Fresh, hot meals delivered daily right to you.</p></div></a>
-  <a class="promo-banner" href="mowp_givehope.html"><img src="images/promo_give.jpg"><div class="promo-banner-overlay"><h3>Give Hope in Pasco</h3><p>Your donation changes a life in East Pasco.</p></div></a>
-  <a class="promo-banner events-banner" href="mowp_events.html"><img src="images/promo_events.jpg"><div class="promo-banner-overlay"><h3>Upcoming Events</h3><p>See what's happening in our community.</p></div></a>
+  <a class="promo-banner" href="mowp_getmeals.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/Front%20Promo%20Banner%20Ver%202.jpg?h=f0d95172&itok=LOnFK75c"><div class="promo-banner-overlay"><h3>Get Meals!</h3><p>Fresh, hot meals delivered daily right to you.</p></div></a>
+  <a class="promo-banner" href="mowp_givehope.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/2026-03/Feeding%20Heart%20Red%20850x850.jpg?h=6a4a5c49&itok=6g32qOpq"><div class="promo-banner-overlay"><h3>Give Hope in Pasco</h3><p>Your donation changes a life in East Pasco.</p></div></a>
+  <a class="promo-banner events-banner" href="mowp_events.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/2026-06/Events%20Promo%20Banner.jpg?h=6a4a5c49&itok=XoJKa4p5"><div class="promo-banner-overlay"><h3>Upcoming Events</h3><p>See what's happening in our community.</p></div></a>
 
   
   <!-- DIVIDER -->
@@ -308,32 +309,32 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
   <!-- UPCOMING EVENTS — update dates/times to match your Drupal calendar -->
   <div class="section-header-block white-bg">Upcoming Events</div>
   <div class="events-wrap">
-    <a class="event-card" href="https://www.mealsonwheelspasco.org/person-jesus-bible-study" target="_blank">
-      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">17</div></div>
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/east-pasco-quilt-guild" target="_blank">
+      <div class="event-date"><div class="ev-month">JUL</div><div class="ev-day">2</div></div>
       <div class="event-info">
-        <div class="event-title">Person of Jesus Bible Study</div>
-        <div class="event-time">Thu, Apr 17 &bull; 6:00pm</div>
+        <div class="event-title">East Pasco Quilt Guild</div>
+        <div class="event-time">Thu, Jul 2 &bull; 11:00am</div>
       </div>
     </a>
-    <a class="event-card" href="https://www.mealsonwheelspasco.org/silver-lining-social" target="_blank">
-      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">18</div></div>
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/feeding-you-love-food-pantry-event" target="_blank">
+      <div class="event-date"><div class="ev-month">JUL</div><div class="ev-day">7</div></div>
       <div class="event-info">
-        <div class="event-title">Silver Lining Social</div>
-        <div class="event-time">Fri, Apr 18 &bull; 1:00pm</div>
+        <div class="event-title">Feeding You With Love Food Pantry</div>
+        <div class="event-time">Tue, Jul 7 &bull; 12:00pm</div>
+      </div>
+    </a>
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/do-you-qualify-medicare-savings" target="_blank">
+      <div class="event-date"><div class="ev-month">JUL</div><div class="ev-day">9</div></div>
+      <div class="event-info">
+        <div class="event-title">Do You Qualify for Medicare Savings?</div>
+        <div class="event-time">Thu, Jul 9 &bull; 10:30am</div>
       </div>
     </a>
     <a class="event-card" href="https://www.mealsonwheelspasco.org/east-pasco-quilt-guild" target="_blank">
-      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">22</div></div>
+      <div class="event-date"><div class="ev-month">JUL</div><div class="ev-day">9</div></div>
       <div class="event-info">
         <div class="event-title">East Pasco Quilt Guild</div>
-        <div class="event-time">Tue, Apr 22 &bull; 9:00am</div>
-      </div>
-    </a>
-    <a class="event-card" href="https://www.mealsonwheelspasco.org/foot-health-awareness-month" target="_blank">
-      <div class="event-date"><div class="ev-month">APR</div><div class="ev-day">25</div></div>
-      <div class="event-info">
-        <div class="event-title">Foot Health Awareness Month</div>
-        <div class="event-time">Fri, Apr 25 &bull; 12:00pm</div>
+        <div class="event-time">Thu, Jul 9 &bull; 11:00am</div>
       </div>
     </a>
     <a class="view-all-link" href="https://www.mealsonwheelspasco.org/calendar" target="_blank">View All Events &rarr;</a>
@@ -342,28 +343,28 @@ body{height:100%;overflow:hidden;background:#1a3a5c;display:flex;align-items:cen
   <!-- NEWS & BLOGS — pulled from mowp_news.html -->
   <div class="section-header-block">News &amp; Blogs</div>
   <div class="news-wrap">
-    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/april-newsletter" target="_blank">
+    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/june-newsletter" target="_blank">
       <div class="news-tag">Newsletter</div>
-      <div class="news-title">April Newsletter</div>
-      <div class="news-date">April 8, 2026</div>
-      <div class="news-excerpt">Spring 2026 Edition — The Genesis Community Center and Meals on Wheels of Pasco. Spring is in full bloom!</div>
+      <div class="news-title">June Newsletter</div>
+      <div class="news-date">June 2026</div>
+      <div class="news-excerpt">Read the East Pasco Meals on Wheels June 2026 Community Newsletter — volunteer spotlights, upcoming events &amp; more.</div>
     </a>
-    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/national-volunteer-month" target="_blank">
+    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/moving-music" target="_blank">
+      <div class="news-tag">Health</div>
+      <div class="news-title">Moving to Music</div>
+      <div class="news-date">May 2026</div>
+      <div class="news-excerpt">Medical professionals say that dancing — in any style — is one of the most powerful forms of exercise for seniors.</div>
+    </a>
+    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/share-love-event" target="_blank">
       <div class="news-tag">Community</div>
-      <div class="news-title">National Volunteer Month</div>
-      <div class="news-date">April 1, 2026</div>
-      <div class="news-excerpt">April Is National Volunteer Month — celebrating those who give their time to Meals on Wheels of Pasco County.</div>
-    </a>
-    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/new-tax-deduction-older-adults" target="_blank">
-      <div class="news-tag">Finance</div>
-      <div class="news-title">New Tax Deduction for Older Adults</div>
-      <div class="news-date">March 19, 2026</div>
-      <div class="news-excerpt">Congress passes a significant $6,000 tax break for Americans 65 and older through 2028.</div>
+      <div class="news-title">Share the Love Event</div>
+      <div class="news-date">May 2026</div>
+      <div class="news-excerpt">East Pasco Meals on Wheels receives funding through participation in the 2025–2026 Subaru Share the Love Event.</div>
     </a>
     <a class="view-all-link" href="mowp_news.html" style="color:var(--navy);">View All News &amp; Blogs &rarr;</a>
   </div>
 
-<div class="bottom-space"></div>
+
 </div>
 
 <!-- BOTTOM NAV -->
