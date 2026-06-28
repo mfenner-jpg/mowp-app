@@ -49,13 +49,13 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 .text-card h3{color:var(--navy);font-family:'Trebuchet MS',sans-serif;font-size:22px;font-weight:700;margin-bottom:5px;}
 .text-card p{color:var(--text-dark);font-family:Georgia,serif;font-size:18px;line-height:1.9;}
 /* TRIPLE DOT DIVIDER — Drupal confirmed */
-.divider{width:100%;border-collapse:collapse;margin:24px 0;display:table;}
+.divider{width:100%;border-collapse:collapse;margin:20px 0;display:table;}
 .divider-left,.divider-right{display:table-cell;border-top:2px solid #cccccc;width:50%;height:0;line-height:0;padding:0;font-size:0;}
 .divider-center{display:table-cell;padding:0 14px;text-align:center;vertical-align:middle;white-space:nowrap;}
 .divider-dots{display:inline-flex;align-items:center;gap:6px;margin-top:-6px;vertical-align:top;}
 .divider-dot-navy{width:10px;height:10px;border-radius:50%;background:#1B3D6E;display:inline-block;}
 .divider-dot-gold{width:10px;height:10px;border-radius:50%;background:#ffc107;display:inline-block;}
-.section-label{font-family:'Trebuchet MS',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:2px;padding:0 16px 8px;}
+.section-label{font-family:'Trebuchet MS',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:2px;padding:0 16px 6px;margin-top:-10px;}
 .action-buttons{padding:0 16px;display:flex;flex-direction:column;gap:8px;}
 .action-btn{display:block;position:relative;height:90px;border-radius:14px;overflow:hidden;text-decoration:none;box-shadow:var(--shadow);transition:transform 0.15s;}
 .action-btn:active{transform:scale(0.98);}
@@ -71,13 +71,16 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 /* BOTTOM NAV — copied exactly from Sample.txt (About Us) */
 #bottomnav{
   width:100%;
-  height:62px;
   background:#fff;
   display:flex;
   align-items:stretch;
   border-top:1px solid #e0e0e0;
   box-shadow:0 -2px 12px rgba(0,0,0,0.10);
   flex-shrink:0;
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+.bnav-item{
+  height:62px;
 }
 .bnav-item{
   flex:1;
@@ -215,7 +218,7 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 <!-- TOP NAV -->
 <div id="topnav">
   <div class="logo-wrap">
-    <img class="logo-img" src="images/Blue_Meals_Logo.jpg" alt="MOWP Logo" onerror="this.src='https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/mowp-logo-header_0_0.png'">
+    <img class="logo-img" src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/mowp-logo-header_0_0.png" alt="MOWP Logo">
     <div class="logo-text">Meals on Wheels<span>of Pasco County</span></div>
   </div>
   <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
