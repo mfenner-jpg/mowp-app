@@ -17,24 +17,24 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 #app{width:100%;max-width:430px;height:100dvh;display:flex;flex-direction:column;background:var(--cream);overflow:hidden;position:relative;}
 @media(min-width:500px){body{background:#d0d0d0;}#app{width:390px;height:844px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.28);}}
 
-/* TOP NAV — matches About Us page exactly */
+/* TOP NAV — copied exactly from Sample.txt (About Us) */
 #topnav{
   background:var(--navy);
+  position:relative;
+  z-index:100;
+  flex-shrink:0;
+  padding:env(safe-area-inset-top,10px) 14px 10px;
   display:flex;
   align-items:center;
   gap:10px;
-  padding:env(safe-area-inset-top,10px) 14px 10px;
-  height:calc(66px + env(safe-area-inset-top));
-  flex-shrink:0;
-  z-index:100;
+  min-height:66px;
 }
 .logo-wrap{display:flex;align-items:center;gap:10px;flex:1;}
 .logo-img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.40);flex-shrink:0;}
 .logo-text{color:#fff;font-family:'Lato',sans-serif;font-size:15px;font-weight:900;line-height:1.2;letter-spacing:0.01em;}
-.logo-text span{display:block;font-family:'Lato',sans-serif;font-size:11.5px;font-weight:400;opacity:.68;}
-.nav-right{display:flex;align-items:center;gap:8px;}
-/* Hamburger */
-.hamburger{background:none;border:none;cursor:pointer;padding:5px;display:flex;flex-direction:column;gap:5px;position:relative;z-index:101;}
+.logo-text span{display:block;font-family:'Lato',sans-serif;font-size:11.5px;font-weight:400;color:rgba(255,255,255,0.68);}
+/* Hamburger — copied from Sample.txt */
+.hamburger{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px;flex-shrink:0;}
 .hamburger span{display:block;width:22px;height:2.5px;background:#fff;border-radius:2px;}
 
 #main{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;}
@@ -49,13 +49,13 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 .text-card h3{color:var(--navy);font-family:'Trebuchet MS',sans-serif;font-size:22px;font-weight:700;margin-bottom:5px;}
 .text-card p{color:var(--text-dark);font-family:Georgia,serif;font-size:18px;line-height:1.9;}
 /* TRIPLE DOT DIVIDER — Drupal confirmed */
-.divider{width:100%;border-collapse:collapse;margin:20px 0;display:table;}
+.divider{width:100%;border-collapse:collapse;margin:24px 0;display:table;}
 .divider-left,.divider-right{display:table-cell;border-top:2px solid #cccccc;width:50%;height:0;line-height:0;padding:0;font-size:0;}
 .divider-center{display:table-cell;padding:0 14px;text-align:center;vertical-align:middle;white-space:nowrap;}
 .divider-dots{display:inline-flex;align-items:center;gap:6px;margin-top:-6px;vertical-align:top;}
 .divider-dot-navy{width:10px;height:10px;border-radius:50%;background:#1B3D6E;display:inline-block;}
 .divider-dot-gold{width:10px;height:10px;border-radius:50%;background:#ffc107;display:inline-block;}
-.section-label{font-family:'Trebuchet MS',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:2px;padding:8px 16px 6px;}
+.section-label{font-family:'Trebuchet MS',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:2px;padding:0 16px 8px;}
 .action-buttons{padding:0 16px;display:flex;flex-direction:column;gap:8px;}
 .action-btn{display:block;position:relative;height:90px;border-radius:14px;overflow:hidden;text-decoration:none;box-shadow:var(--shadow);transition:transform 0.15s;}
 .action-btn:active{transform:scale(0.98);}
@@ -66,9 +66,9 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 .ab-title{font-family:'Trebuchet MS',sans-serif;font-size:15px;font-weight:700;color:#fff;line-height:1.2;text-shadow:0 1px 6px rgba(0,0,0,0.45);}
 .ab-sub{font-size:11px;color:rgba(255,255,255,0.88);margin-top:3px;line-height:1.3;text-shadow:0 1px 4px rgba(0,0,0,0.35);}
 .ab-arrow{width:32px;height:32px;flex-shrink:0;background:rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:900;}
-.bottom-space{height:8px;}
 
-/* BOTTOM NAV — matches About Us page exactly */
+
+/* BOTTOM NAV — copied exactly from Sample.txt (About Us) */
 #bottomnav{
   width:100%;
   height:62px;
@@ -98,7 +98,8 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 }
 .bnav-icon{font-size:20px;line-height:1;}
 .bnav-label{font-size:10px;font-weight:700;color:#888;}
-.bnav-item.active .bnav-label,.bnav-item.active{color:var(--navy);}
+.bnav-item.active{color:var(--navy);}
+.bnav-item.active .bnav-label{color:var(--navy);}
 .bnav-donate.active .bnav-label{color:var(--red);}
 
 /* MENU OVERLAY */
@@ -181,7 +182,7 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 }
 
 /* GOLD SINGLE DOT DIVIDER — Drupal confirmed */
-.divider-single{width:100%;border-collapse:collapse;margin:20px 0;display:table;}
+.divider-single{width:100%;border-collapse:collapse;margin:24px 0;display:table;}
 .divider-single-left,.divider-single-right{display:table-cell;border-top:2px solid #cccccc;width:50%;height:0;line-height:0;padding:0;font-size:0;}
 .divider-single-center{display:table-cell;padding:0 14px;text-align:center;vertical-align:middle;white-space:nowrap;}
 .divider-single-dot{width:12px;height:12px;border-radius:50%;background:#ffc107;display:inline-block;margin-top:-7px;vertical-align:top;}
@@ -204,7 +205,7 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 .section-header-block {
   font-family:'Lato',sans-serif; font-size:13px; font-weight:900;
   color:var(--navy); letter-spacing:0.09em; text-transform:uppercase;
-  padding:16px 16px 10px;
+  padding:8px 16px 10px;
   background:#f4f4f4;
 }
 .section-header-block.white-bg { background:#fff; }
