@@ -1,7 +1,10 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover,maximum-scale=1.0,user-scalable=no">
-<title>Meals on Wheels of Pasco County</title><link rel="manifest" href="manifest.json">
+<title>Meals on Wheels of Pasco County</title>
+<link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -12,95 +15,30 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 :root{--navy:#1B3D6E;--green:#357D2B;--red:#c0392b;--gold:#ffc107;--cream:#faf7f2;--white:#fff;--border:#e0e0e0;--text-dark:#1a1a1a;--text-mid:#555;--shadow:0 2px 10px rgba(0,0,0,0.10);}
-html,body{height:100%;overflow:hidden;margin:0;padding:0;}
-body{background:#fff;display:flex;flex-direction:column;font-family:Georgia,serif;font-size:20px;line-height:1.9;}
-#app{width:100%;max-width:430px;flex:1;display:flex;flex-direction:column;background:var(--cream);overflow:hidden;position:relative;margin:0 auto;}
-@media(min-width:500px){body{background:#d0d0d0;align-items:center;justify-content:center;}#app{width:390px;height:844px;flex:none;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.28);}}
+html{height:100%;overflow:hidden;}
+body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:20px;line-height:1.9;}
+#app{width:100%;max-width:430px;height:100dvh;display:flex;flex-direction:column;background:var(--cream);overflow:hidden;position:relative;}
+@media(min-width:500px){body{background:#d0d0d0;}#app{width:390px;height:844px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.28);}}
 
-/* TOP NAV — copied exactly from Sample.txt (About Us) */
-#topnav{
-  background:var(--navy);
-  position:relative;
-  z-index:100;
-  flex-shrink:0;
-  padding:env(safe-area-inset-top,10px) 14px 10px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  min-height:66px;
-}
+#topnav{background:var(--navy);position:relative;z-index:100;flex-shrink:0;padding:env(safe-area-inset-top,10px) 14px 10px;display:flex;align-items:center;gap:10px;min-height:66px;}
 .logo-wrap{display:flex;align-items:center;gap:10px;flex:1;}
 .logo-img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.40);flex-shrink:0;}
 .logo-text{color:#fff;font-family:'Lato',sans-serif;font-size:15px;font-weight:900;line-height:1.2;letter-spacing:0.01em;}
 .logo-text span{display:block;font-family:'Lato',sans-serif;font-size:11.5px;font-weight:400;color:rgba(255,255,255,0.68);}
-/* Hamburger — copied from Sample.txt */
 .hamburger{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px;flex-shrink:0;}
 .hamburger span{display:block;width:22px;height:2.5px;background:#fff;border-radius:2px;}
 
 #main{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;}
 #main::-webkit-scrollbar{width:3px;}
 #main::-webkit-scrollbar-thumb{background:rgba(26,58,92,0.25);border-radius:3px;}
-.hero{position:relative;height:175px;overflow:hidden;flex-shrink:0;}
-.hero img{width:100%;height:100%;object-fit:cover;object-position:center 35%;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(26,58,92,0.55) 0%,rgba(26,58,92,0.15) 100%);display:flex;align-items:flex-end;padding:16px 18px;}
-.hero-title{color:#fff;font-family:'Playfair Display',serif;font-size:24px;font-weight:700;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,0.45);}
-.hero-sub{color:rgba(255,255,255,0.92);font-size:12.5px;margin-top:4px;text-shadow:0 1px 4px rgba(0,0,0,0.4);line-height:1.4;}
-.text-card{background:#fff;margin:10px 16px;border-radius:14px;padding:13px 16px;box-shadow:var(--shadow);border-left:4px solid var(--green);}
-.text-card h3{color:var(--navy);font-family:'Trebuchet MS',sans-serif;font-size:22px;font-weight:700;margin-bottom:5px;}
-.text-card p{color:var(--text-dark);font-family:Georgia,serif;font-size:18px;line-height:1.9;}
-/* TRIPLE DOT DIVIDER — Drupal confirmed */
+
 .divider{width:100%;border-collapse:collapse;margin:20px 0;display:table;}
 .divider-left,.divider-right{display:table-cell;border-top:2px solid #cccccc;width:50%;height:0;line-height:0;padding:0;font-size:0;}
 .divider-center{display:table-cell;padding:0 14px;text-align:center;vertical-align:middle;white-space:nowrap;}
 .divider-dots{display:inline-flex;align-items:center;gap:6px;margin-top:-6px;vertical-align:top;}
-.divider-dot-navy{width:10px;height:10px;border-radius:50%;background:#1B3D6E;display:inline-block;}
-.divider-dot-gold{width:10px;height:10px;border-radius:50%;background:#ffc107;display:inline-block;}
-.section-label{font-family:'Trebuchet MS',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:2px;padding:0 16px 6px;margin-top:-10px;}
-.action-buttons{padding:0 16px;display:flex;flex-direction:column;gap:8px;}
-.action-btn{display:block;position:relative;height:90px;border-radius:14px;overflow:hidden;text-decoration:none;box-shadow:var(--shadow);transition:transform 0.15s;}
-.action-btn:active{transform:scale(0.98);}
-.action-btn-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;object-position:center center;}
-.action-btn-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0.28) 0%,rgba(0,0,0,0.10) 100%);}
-.action-btn-content{position:absolute;inset:0;display:flex;align-items:center;padding:0 18px;}
-.ab-text{flex:1;}
-.ab-title{font-family:'Trebuchet MS',sans-serif;font-size:15px;font-weight:700;color:#fff;line-height:1.2;text-shadow:0 1px 6px rgba(0,0,0,0.45);}
-.ab-sub{font-size:11px;color:rgba(255,255,255,0.88);margin-top:3px;line-height:1.3;text-shadow:0 1px 4px rgba(0,0,0,0.35);}
-.ab-arrow{width:32px;height:32px;flex-shrink:0;background:rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:900;}
-
-
-/* BOTTOM NAV — copied exactly from Sample.txt (About Us) */
-#bottomnav{
-  width:100%;
-  background:#fff;
-  display:flex;
-  align-items:stretch;
-  border-top:1px solid #e0e0e0;
-  box-shadow:0 -2px 12px rgba(0,0,0,0.10);
-  flex-shrink:0;
-  height:62px;
-}
-.bnav-item{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  color:#888;
-  text-decoration:none;
-  font-family:'Lato',sans-serif;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:0.04em;
-  gap:3px;
-  border:none;
-  background:none;
-  cursor:pointer;
-}
-.bnav-icon{font-size:20px;line-height:1;}
-.bnav-label{font-size:10px;font-weight:700;color:#888;}
-.bnav-item.active{color:var(--navy);}
-.bnav-item.active .bnav-label{color:var(--navy);}
-.bnav-donate.active .bnav-label{color:var(--red);}
+.divider-dot-navy{width:10px;height:10px;border-radius:50%;background:var(--navy);display:inline-block;}
+.divider-dot-gold{width:10px;height:10px;border-radius:50%;background:var(--gold);display:inline-block;}
+.section-label{font-family:'Trebuchet MS',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:2px;padding:0 16px 8px;margin-top:-10px;}
 
 /* MENU OVERLAY */
 #menuOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;}
@@ -138,7 +76,6 @@ body{background:#fff;display:flex;flex-direction:column;font-family:Georgia,seri
 /* HOW CAN WE HELP */
 .how-header{padding:14px 16px 8px;font-family:'Trebuchet MS',sans-serif;font-size:22px;font-weight:700;color:var(--navy);}
 .focus-cards-wrap{padding:0 16px 12px;}
-
 .focus-cards{display:flex;gap:8px;width:100%;}
 .focus-card{flex:1;min-width:0;background:#fff;border-radius:14px;padding:14px 10px 12px;box-shadow:var(--shadow);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;align-self:stretch;}
 .focus-card img{width:56px;height:56px;object-fit:contain;}
@@ -146,84 +83,65 @@ body{background:#fff;display:flex;flex-direction:column;font-family:Georgia,seri
 .focus-card-sub{font-family:Georgia,serif;font-size:11px;color:var(--text-mid);text-align:center;line-height:1.4;flex:1;}
 .focus-card-btn{background:var(--green);color:#fff;font-family:'Trebuchet MS',sans-serif;font-size:11px;font-weight:700;padding:6px 12px;border-radius:8px;margin-top:2px;white-space:nowrap;}
 
-/* PROMO BANNERS */
-.promo-banner{margin:0 16px 10px;border-radius:14px;overflow:hidden;position:relative;height:90px;box-shadow:var(--shadow);text-decoration:none;display:block;}
-.promo-banner img{width:100%;height:100%;object-fit:cover;object-position:center center;}
-.promo-banner-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0.52) 0%,rgba(0,0,0,0.15) 60%,rgba(0,0,0,0.05) 100%);display:flex;flex-direction:column;justify-content:center;padding:0 16px;}
-.promo-banner-overlay h3{color:#fff;font-family:'Trebuchet MS',sans-serif;font-size:16px;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,0.6);}
-.promo-banner-overlay p{color:rgba(255,255,255,0.90);font-family:Georgia,serif;font-size:12px;margin-top:2px;text-shadow:0 1px 3px rgba(0,0,0,0.5);}
-.events-banner img{object-position:center 20%;}
+/* REDESIGNED EXPLORE — OPTION 3 GLASS PANEL, NO ICONS OR EMOJIS */
+.explore-wrap{padding:0 16px 6px;display:flex;flex-direction:column;gap:10px;}
+.explore-card{position:relative;display:block;height:118px;border-radius:16px;overflow:hidden;text-decoration:none;box-shadow:var(--shadow);background:#111;}
+.explore-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transform:scale(1.01);}
+.explore-card::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.26) 0%,rgba(0,0,0,.04) 58%,rgba(0,0,0,.18) 100%);}
+.explore-content{position:absolute;z-index:2;left:12px;top:50%;transform:translateY(-50%);width:64%;max-width:245px;padding:13px 14px;border-radius:14px;background:rgba(0,0,0,.42);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border:1px solid rgba(255,255,255,.18);box-shadow:0 6px 16px rgba(0,0,0,.20);}
+.explore-title{font-family:'Trebuchet MS',sans-serif;font-size:18px;font-weight:700;color:#fff;line-height:1.18;text-shadow:0 1px 5px rgba(0,0,0,.55);}
+.explore-sub{font-family:Georgia,serif;font-size:12.5px;color:rgba(255,255,255,.94);line-height:1.35;margin-top:5px;text-shadow:0 1px 4px rgba(0,0,0,.50);}
+.explore-arrow{position:absolute;z-index:3;right:13px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.86);color:var(--navy);font-family:'Lato',sans-serif;font-size:20px;font-weight:900;box-shadow:0 2px 8px rgba(0,0,0,.20);}
+.explore-card:active{transform:scale(.985);}
+@media(max-width:360px){.explore-content{width:70%;}.explore-title{font-size:16px;}.explore-sub{font-size:11.5px;}}
 
+/* UPCOMING EVENTS */
+.events-wrap{background:#fff;padding:0 14px 14px;}
+.event-card{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #e0e0e0;text-decoration:none;cursor:pointer;}
+.event-card:last-child{border-bottom:none;}
+.event-date{background:var(--navy);color:#fff;border-radius:10px;padding:6px 10px;text-align:center;min-width:48px;flex-shrink:0;}
+.event-date .ev-month{font-family:'Lato',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;}
+.event-date .ev-day{font-family:'Lato',sans-serif;font-size:22px;font-weight:900;line-height:1;}
+.event-info{flex:1;}
+.event-title{font-family:'Lato',sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;line-height:1.3;}
+.event-time{font-size:11px;color:#555;margin-top:2px;}
+.view-all-link{display:block;text-align:center;color:var(--navy);font-family:'Lato',sans-serif;font-size:13px;font-weight:700;padding:12px;text-decoration:none;}
+.section-header-block{font-family:'Lato',sans-serif;font-size:13px;font-weight:900;color:var(--navy);letter-spacing:0.09em;text-transform:uppercase;padding:8px 16px 10px;background:#f4f4f4;}
+.section-header-block.white-bg{background:#fff;}
 
-
-/* --- UPCOMING EVENTS --- */
-.events-wrap { background:#fff; padding:0 14px 14px; }
-.event-card {
-  display:flex; align-items:center; gap:12px;
-  padding:12px 0; border-bottom:1px solid #e0e0e0;
-  text-decoration:none; cursor:pointer;
-}
-.event-card:last-child { border-bottom:none; }
-.event-date {
-  background:var(--navy); color:#fff;
-  border-radius:10px; padding:6px 10px;
-  text-align:center; min-width:48px; flex-shrink:0;
-}
-.event-date .ev-month { font-family:'Lato',sans-serif; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; }
-.event-date .ev-day { font-family:'Lato',sans-serif; font-size:22px; font-weight:900; line-height:1; }
-.event-info { flex:1; }
-.event-title { font-family:'Lato',sans-serif; font-size:13px; font-weight:700; color:#1a1a1a; line-height:1.3; }
-.event-time { font-size:11px; color:#555; margin-top:2px; }
-.view-all-link {
-  display:block; text-align:center;
-  color:var(--navy); font-family:'Lato',sans-serif;
-  font-size:13px; font-weight:700; padding:12px;
-  text-decoration:none;
-}
-
-/* GOLD SINGLE DOT DIVIDER — Drupal confirmed */
-.divider-single{width:100%;border-collapse:collapse;margin:20px 0;display:table;}
+/* NEWS */
+.news-wrap{background:#f4f4f4;padding:0 14px 14px;}
+.news-card{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.10);padding:14px;margin-bottom:10px;text-decoration:none;display:block;border-left:4px solid var(--navy);}
+.news-card:last-child{margin-bottom:0;}
+.news-tag{font-size:10px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px;font-family:'Lato',sans-serif;}
+.news-title{font-family:'Lato',sans-serif;font-size:13.5px;font-weight:700;color:#1a1a1a;line-height:1.35;}
+.news-date{font-size:11px;color:#555;margin-top:4px;}
+.news-excerpt{font-size:11.5px;color:#555;margin-top:5px;line-height:1.45;}
+.divider-single{width:100%;border-collapse:collapse;margin:24px 0;display:table;}
 .divider-single-left,.divider-single-right{display:table-cell;border-top:2px solid #cccccc;width:50%;height:0;line-height:0;padding:0;font-size:0;}
 .divider-single-center{display:table-cell;padding:0 14px;text-align:center;vertical-align:middle;white-space:nowrap;}
-.divider-single-dot{width:12px;height:12px;border-radius:50%;background:#ffc107;display:inline-block;margin-top:-7px;vertical-align:top;}
+.divider-single-dot{width:12px;height:12px;border-radius:50%;background:var(--gold);display:inline-block;margin-top:-7px;vertical-align:top;}
 
-/* --- NEWS & BLOGS --- */
-.news-wrap { background:#f4f4f4; padding:4px 14px 14px; }
-.news-card {
-  background:#fff; border-radius:12px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.10); padding:14px;
-  margin-bottom:10px; text-decoration:none; display:block;
-  border-left:4px solid var(--navy);
-}
-.news-card:last-child { margin-bottom:0; }
-.news-tag { font-size:10px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:4px; font-family:'Lato',sans-serif; }
-.news-title { font-family:'Lato',sans-serif; font-size:13.5px; font-weight:700; color:#1a1a1a; line-height:1.35; }
-.news-date { font-size:11px; color:#555; margin-top:4px; }
-.news-excerpt { font-size:11.5px; color:#555; margin-top:5px; line-height:1.45; }
+#bottomnav{width:100%;background:#fff;display:flex;align-items:stretch;border-top:1px solid #e0e0e0;box-shadow:0 -2px 12px rgba(0,0,0,0.10);flex-shrink:0;padding-bottom:env(safe-area-inset-bottom,0px);}
+.bnav-item{height:62px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#888;text-decoration:none;font-family:'Lato',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.04em;gap:3px;border:none;background:none;cursor:pointer;}
+.bnav-icon{font-size:20px;line-height:1;}
+.bnav-label{font-size:10px;font-weight:700;color:#888;}
+.bnav-item.active{color:var(--navy);}
+.bnav-item.active .bnav-label{color:var(--navy);}
+.bnav-donate.active .bnav-label{color:var(--red);}
+</style>
+</head>
+<body>
+<div id="app">
 
-/* --- SECTION HEADER (events/news) --- */
-.section-header-block {
-  font-family:'Lato',sans-serif; font-size:13px; font-weight:900;
-  color:var(--navy); letter-spacing:0.09em; text-transform:uppercase;
-  padding:8px 16px 10px;
-  background:#f4f4f4;
-}
-.section-header-block.white-bg { background:#fff; }
-</style></head>
-<body><div id="app">
-
-<!-- TOP NAV -->
 <div id="topnav">
   <div class="logo-wrap">
     <img class="logo-img" src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/mowp-logo-header_0_0.png" alt="MOWP Logo">
     <div class="logo-text">Meals on Wheels<span>of Pasco County</span></div>
   </div>
-  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
 </div>
 
-<!-- MENU OVERLAY -->
 <div id="menuOverlay" onclick="closeMenu()"></div>
 <div id="sideMenu">
   <div id="menuHeader"><span>Menu</span><button onclick="closeMenu()" id="menuClose">&#10005;</button></div>
@@ -274,147 +192,92 @@ body{background:#fff;display:flex;flex-direction:column;font-family:Georgia,seri
   </div>
 </div>
 
-<!-- MAIN SCROLL AREA -->
 <div id="main">
-
-  <!-- CAROUSEL -->
   <div class="carousel" id="carousel">
     <div class="carousel-track" id="carouselTrack">
-      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/get-meals-0','_blank')"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_rotor_image/public/2026-05/Rotor%20Image%203000x1000px.jpg?h=cfea4fea&itok=Jgw4iMc2"><div class="carousel-overlay"><div><h2>Together, We Can Deliver</h2><p>Meals delivered to your home Monday through Friday.</p></div></div></div>
-      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/volunteer-opportunities','_blank')"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_rotor_image/public/2026-06/Pasco%20Runs%20on%20Heart%20Ver4.jpg?h=cfea4fea&itok=wUm7OfrK"><div class="carousel-overlay"><div><h2>Pasco Runs on Heart</h2><p>Join our team and bring companionship home.</p></div></div></div>
-      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/amazon-wishlist-0','_blank')"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_rotor_image/public/2026-06/Amazon%20Rotor%20Image%20Ver%202.jpg?h=cfea4fea&itok=DfhYTgnL"><div class="carousel-overlay"><div><h2>Amazon Wishlist</h2><p>Every item donated delivers kindness to seniors in need.</p></div></div></div>
-      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/our-programs','_blank')"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_rotor_image/public/2025-12/Home%20Page%20Header%20Image%20Ver%201.png?h=849beab9&itok=gfUANMzk"><div class="carousel-overlay"><div><h2>Discover Our Programs</h2><p>Explore the ways you can engage and assist those in need.</p></div></div></div>
+      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/get-meals-0','_blank')"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_rotor_image/public/2026-05/Rotor%20Image%203000x1000px.jpg?h=cfea4fea&itok=Jgw4iMc2" alt="Meal delivery"><div class="carousel-overlay"><div><h2>Together, We Can Deliver</h2><p>Meals delivered to your home Monday through Friday.</p></div></div></div>
+      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/volunteer-opportunities','_blank')"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_rotor_image/public/2026-06/Pasco%20Runs%20on%20Heart%20Ver4.jpg?h=cfea4fea&itok=wUm7OfrK" alt="Volunteers"><div class="carousel-overlay"><div><h2>Pasco Runs on Heart</h2><p>Join our team and bring companionship home.</p></div></div></div>
+      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/amazon-wishlist-0','_blank')"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_rotor_image/public/2026-06/Amazon%20Rotor%20Image%20Ver%202.jpg?h=cfea4fea&itok=DfhYTgnL" alt="Amazon Wishlist"><div class="carousel-overlay"><div><h2>Amazon Wishlist</h2><p>Every item donated delivers kindness to seniors in need.</p></div></div></div>
+      <div class="carousel-slide" onclick="window.open('https://www.mealsonwheelspasco.org/our-programs','_blank')"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_rotor_image/public/2025-12/Home%20Page%20Header%20Image%20Ver%201.png?h=849beab9&itok=gfUANMzk" alt="Programs"><div class="carousel-overlay"><div><h2>Discover Our Programs</h2><p>Explore the ways you can engage and assist those in need.</p></div></div></div>
     </div>
     <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#8249;</button>
     <button class="carousel-btn next" onclick="moveCarousel(1)">&#8250;</button>
-    <div class="carousel-dots">
-      <div class="dot active" onclick="goToSlide(0)"></div>
-      <div class="dot" onclick="goToSlide(1)"></div>
-      <div class="dot" onclick="goToSlide(2)"></div>
-      <div class="dot" onclick="goToSlide(3)"></div>
-    </div>
+    <div class="carousel-dots"><div class="dot active" onclick="goToSlide(0)"></div><div class="dot" onclick="goToSlide(1)"></div><div class="dot" onclick="goToSlide(2)"></div><div class="dot" onclick="goToSlide(3)"></div></div>
   </div>
 
-  <!-- HOW CAN WE HELP -->
   <div class="how-header">How Can We Help?</div>
   <div class="focus-cards-wrap"><div class="focus-cards">
-    <a class="focus-card" href="mowp_givehope.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/focus_areas/public/2025-11/Donate%20Focus%20Icon%20-%20Ver%201_0.png?h=eb901320&itok=XJu1hpBa"><div class="focus-card-title">Donate</div><div class="focus-card-sub">Help nourish a local senior today</div><div class="focus-card-btn">Donate Today</div></a>
-    <a class="focus-card" href="mowp_getmeals.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/focus_areas/public/2025-11/Get%20Meals%20Icon%20-%20Ver%203.png?h=eb901320&itok=YzNrqjIJ"><div class="focus-card-title">Get Meals</div><div class="focus-card-sub">Hot entree, fruit &amp; dessert</div><div class="focus-card-btn">Sign Up</div></a>
-    <a class="focus-card" href="mowp_volunteer.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/focus_areas/public/2025-11/Volunteer%20Focus%20Ver%201.png?h=eb901320&itok=9MH561PQ"><div class="focus-card-title">Volunteer</div><div class="focus-card-sub">Make a difference today</div><div class="focus-card-btn">Get Involved</div></a>
+    <a class="focus-card" href="mowp_givehope.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/focus_areas/public/2025-11/Donate%20Focus%20Icon%20-%20Ver%201_0.png?h=eb901320&itok=XJu1hpBa" alt="Donate"><div class="focus-card-title">Donate</div><div class="focus-card-sub">Help nourish a local senior today</div><div class="focus-card-btn">Donate Today</div></a>
+    <a class="focus-card" href="mowp_getmeals.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/focus_areas/public/2025-11/Get%20Meals%20Icon%20-%20Ver%203.png?h=eb901320&itok=YzNrqjIJ" alt="Get Meals"><div class="focus-card-title">Get Meals</div><div class="focus-card-sub">Hot entree, fruit &amp; dessert</div><div class="focus-card-btn">Sign Up</div></a>
+    <a class="focus-card" href="mowp_volunteer.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/focus_areas/public/2025-11/Volunteer%20Focus%20Ver%201.png?h=eb901320&itok=9MH561PQ" alt="Volunteer"><div class="focus-card-title">Volunteer</div><div class="focus-card-sub">Make a difference today</div><div class="focus-card-btn">Get Involved</div></a>
   </div></div>
 
-  <!-- EXPLORE PROMO BANNERS -->
   <div class="divider"><div class="divider-left"></div><div class="divider-center"><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div></div><div class="divider-right"></div></div>
   <div class="section-label">Explore</div>
-  <a class="promo-banner" href="mowp_getmeals.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/Front%20Promo%20Banner%20Ver%202.jpg?h=f0d95172&itok=LOnFK75c"><div class="promo-banner-overlay"><h3>Get Meals!</h3><p>Fresh, hot meals delivered daily right to you.</p></div></a>
-  <a class="promo-banner" href="mowp_programs.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/2026-03/Feeding%20Heart%20Red%20850x850.jpg?h=6a4a5c49&itok=6g32qOpq"><div class="promo-banner-overlay"><h3>Feeding You With Love Food Pantry</h3><p>Nourishing our community, one meal at a time.</p></div></a>
-  <a class="promo-banner events-banner" href="mowp_events.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/2026-06/Events%20Promo%20Banner.jpg?h=6a4a5c49&itok=XoJKa4p5"><div class="promo-banner-overlay"><h3>Upcoming Events</h3><p>See what's happening in our community.</p></div></a>
 
-  
-  <!-- DIVIDER -->
+  <div class="explore-wrap">
+    <a class="explore-card" href="mowp_getmeals.html">
+      <img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/Front%20Promo%20Banner%20Ver%202.jpg?h=f0d95172&itok=LOnFK75c" alt="Get Meals">
+      <div class="explore-content"><div class="explore-title">Get Meals</div><div class="explore-sub">Fresh, hot meals delivered Monday through Friday.</div></div>
+      <div class="explore-arrow">&#8250;</div>
+    </a>
+    <a class="explore-card" href="mowp_programs.html">
+      <img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/2026-03/Feeding%20Heart%20Red%20850x850.jpg?h=6a4a5c49&itok=6g32qOpq" alt="Food Pantry">
+      <div class="explore-content"><div class="explore-title">Food Pantry</div><div class="explore-sub">Groceries and support for individuals and families.</div></div>
+      <div class="explore-arrow">&#8250;</div>
+    </a>
+    <a class="explore-card" href="mowp_events.html">
+      <img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/2026-06/Events%20Promo%20Banner.jpg?h=6a4a5c49&itok=XoJKa4p5" alt="Upcoming Events">
+      <div class="explore-content"><div class="explore-title">Community Events</div><div class="explore-sub">Classes, workshops and activities in our community.</div></div>
+      <div class="explore-arrow">&#8250;</div>
+    </a>
+  </div>
+
   <div class="divider"><div class="divider-left"></div><div class="divider-center"><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div></div><div class="divider-right"></div></div>
 
-  <!-- UPCOMING EVENTS — update dates/times to match your Drupal calendar -->
   <div class="section-header-block white-bg">Upcoming Events</div>
   <div class="events-wrap">
-    <a class="event-card" href="https://www.mealsonwheelspasco.org/east-pasco-quilt-guild" target="_blank">
-      <div class="event-date"><div class="ev-month">JUL</div><div class="ev-day">2</div></div>
-      <div class="event-info">
-        <div class="event-title">East Pasco Quilt Guild</div>
-        <div class="event-time">Thu, Jul 2 &bull; 11:00am</div>
-      </div>
-    </a>
-    <a class="event-card" href="https://www.mealsonwheelspasco.org/feeding-you-love-food-pantry-event" target="_blank">
-      <div class="event-date"><div class="ev-month">JUL</div><div class="ev-day">7</div></div>
-      <div class="event-info">
-        <div class="event-title">Feeding You With Love Food Pantry</div>
-        <div class="event-time">Tue, Jul 7 &bull; 12:00pm</div>
-      </div>
-    </a>
-    <a class="event-card" href="https://www.mealsonwheelspasco.org/do-you-qualify-medicare-savings" target="_blank">
-      <div class="event-date"><div class="ev-month">JUL</div><div class="ev-day">9</div></div>
-      <div class="event-info">
-        <div class="event-title">Do You Qualify for Medicare Savings?</div>
-        <div class="event-time">Thu, Jul 9 &bull; 10:30am</div>
-      </div>
-    </a>
-    <a class="event-card" href="https://www.mealsonwheelspasco.org/east-pasco-quilt-guild" target="_blank">
-      <div class="event-date"><div class="ev-month">JUL</div><div class="ev-day">9</div></div>
-      <div class="event-info">
-        <div class="event-title">East Pasco Quilt Guild</div>
-        <div class="event-time">Thu, Jul 9 &bull; 11:00am</div>
-      </div>
-    </a>
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/east-pasco-quilt-guild" target="_blank"><div class="event-date"><div class="ev-month">JUL</div><div class="ev-day">2</div></div><div class="event-info"><div class="event-title">East Pasco Quilt Guild</div><div class="event-time">Thu, Jul 2 &bull; 11:00am</div></div></a>
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/feeding-you-love-food-pantry-event" target="_blank"><div class="event-date"><div class="ev-month">JUL</div><div class="ev-day">7</div></div><div class="event-info"><div class="event-title">Feeding You With Love Food Pantry</div><div class="event-time">Tue, Jul 7 &bull; 12:00pm</div></div></a>
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/do-you-qualify-medicare-savings" target="_blank"><div class="event-date"><div class="ev-month">JUL</div><div class="ev-day">9</div></div><div class="event-info"><div class="event-title">Do You Qualify for Medicare Savings?</div><div class="event-time">Thu, Jul 9 &bull; 10:30am</div></div></a>
+    <a class="event-card" href="https://www.mealsonwheelspasco.org/east-pasco-quilt-guild" target="_blank"><div class="event-date"><div class="ev-month">JUL</div><div class="ev-day">9</div></div><div class="event-info"><div class="event-title">East Pasco Quilt Guild</div><div class="event-time">Thu, Jul 9 &bull; 11:00am</div></div></a>
     <a class="view-all-link" href="https://www.mealsonwheelspasco.org/calendar" target="_blank">View All Events &rarr;</a>
   </div>
 
-  <!-- SINGLE DOT DIVIDER -->
   <div class="divider-single"><div class="divider-single-left"></div><div class="divider-single-center"><div class="divider-single-dot"></div></div><div class="divider-single-right"></div></div>
 
-  <!-- NEWS & BLOGS — pulled from mowp_news.html -->
   <div class="section-header-block">News &amp; Blogs</div>
   <div class="news-wrap">
-    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/june-newsletter" target="_blank">
-      <div class="news-tag">Newsletter</div>
-      <div class="news-title">June Newsletter</div>
-      <div class="news-date">June 2026</div>
-      <div class="news-excerpt">Read the East Pasco Meals on Wheels June 2026 Community Newsletter — volunteer spotlights, upcoming events &amp; more.</div>
-    </a>
-    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/moving-music" target="_blank">
-      <div class="news-tag">Health</div>
-      <div class="news-title">Moving to Music</div>
-      <div class="news-date">May 2026</div>
-      <div class="news-excerpt">Medical professionals say that dancing — in any style — is one of the most powerful forms of exercise for seniors.</div>
-    </a>
-    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/share-love-event" target="_blank">
-      <div class="news-tag">Community</div>
-      <div class="news-title">Share the Love Event</div>
-      <div class="news-date">May 2026</div>
-      <div class="news-excerpt">East Pasco Meals on Wheels receives funding through participation in the 2025–2026 Subaru Share the Love Event.</div>
-    </a>
+    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/june-newsletter" target="_blank"><div class="news-tag">Newsletter</div><div class="news-title">June Newsletter</div><div class="news-date">June 2026</div><div class="news-excerpt">Read the East Pasco Meals on Wheels June 2026 Community Newsletter — volunteer spotlights, upcoming events &amp; more.</div></a>
+    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/moving-music" target="_blank"><div class="news-tag">Health</div><div class="news-title">Moving to Music</div><div class="news-date">May 2026</div><div class="news-excerpt">Medical professionals say that dancing — in any style — is one of the most powerful forms of exercise for seniors.</div></a>
+    <a class="news-card" href="https://www.mealsonwheelspasco.org/blog/share-love-event" target="_blank"><div class="news-tag">Community</div><div class="news-title">Share the Love Event</div><div class="news-date">May 2026</div><div class="news-excerpt">East Pasco Meals on Wheels receives funding through participation in the 2025–2026 Subaru Share the Love Event.</div></a>
     <a class="view-all-link" href="mowp_news.html" style="color:var(--navy);">View All News &amp; Blogs &rarr;</a>
   </div>
 
-  <!-- TRIPLE DOT DIVIDER — end of page -->
   <div class="divider" style="margin:20px 0 24px;"><div class="divider-left"></div><div class="divider-center"><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div></div><div class="divider-right"></div></div>
-
 </div>
 
-<!-- BOTTOM NAV -->
 <nav id="bottomnav">
   <a class="bnav-item active" href="index.html"><span class="bnav-icon">🏠</span><span class="bnav-label">HOME</span></a>
   <a class="bnav-item bnav-donate" href="javascript:window.open('https://www.mealsonwheelspasco.org/Donate%20Form','_blank')"><span class="bnav-icon">❤️</span><span class="bnav-label">DONATE</span></a>
   <a class="bnav-item" href="mowp_programs.html"><span class="bnav-icon">🍳</span><span class="bnav-label">PROGRAMS</span></a>
   <a class="bnav-item" href="mowp_events.html"><span class="bnav-icon">📅</span><span class="bnav-label">EVENTS</span></a>
 </nav>
+</div>
 
-</div><script>
-// HAMBURGER MENU
-var hamburgerBtn = document.getElementById('hamburgerBtn');
-hamburgerBtn.addEventListener('click', function(e){
-  e.stopPropagation();
-  openMenu();
-});
-function openMenu(){
-  document.getElementById('sideMenu').classList.add('open');
-  document.getElementById('menuOverlay').classList.add('open');
-}
-function closeMenu(){
-  document.getElementById('sideMenu').classList.remove('open');
-  document.getElementById('menuOverlay').classList.remove('open');
-}
-function toggleGroup(el){
-  el.classList.toggle('open');
-  el.nextElementSibling.classList.toggle('open');
-}
-
-// CAROUSEL
-var cur=0;
-var track=document.getElementById('carouselTrack');
+<script>
+var hamburgerBtn=document.getElementById('hamburgerBtn');
+hamburgerBtn.addEventListener('click',function(e){e.stopPropagation();openMenu();});
+function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('menuOverlay').classList.add('open');}
+function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('menuOverlay').classList.remove('open');}
+function toggleGroup(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open');}
+var cur=0;var track=document.getElementById('carouselTrack');
 function getW(){return document.querySelector('.carousel-slide').offsetWidth;}
 function moveCarousel(dir){var n=document.querySelectorAll('.carousel-slide').length;cur=(cur+dir+n)%n;goToSlide(cur);}
 function goToSlide(n){cur=n;track.style.transform='translateX(-'+(n*getW())+'px)';document.querySelectorAll('.dot').forEach(function(d,i){d.classList.toggle('active',i===n);});}
 setInterval(function(){moveCarousel(1);},4000);
-
+window.addEventListener('resize',function(){goToSlide(cur);});
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){});}
-</script></body></html>
+</script>
+</body>
+</html>
