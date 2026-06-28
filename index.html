@@ -17,31 +17,25 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 #app{width:100%;max-width:430px;height:100dvh;display:flex;flex-direction:column;background:var(--cream);overflow:hidden;position:relative;}
 @media(min-width:500px){body{background:#d0d0d0;}#app{width:390px;height:844px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.28);}}
 
-/* TOP NAV — safe area push-down so it clears phone status bar */
+/* TOP NAV — matches About Us page exactly */
 #topnav{
   background:var(--navy);
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  padding:0 14px;
-  padding-top:env(safe-area-inset-top);
-  height:calc(68px + env(safe-area-inset-top));
+  gap:10px;
+  padding:env(safe-area-inset-top,10px) 14px 10px;
+  height:calc(66px + env(safe-area-inset-top));
   flex-shrink:0;
   z-index:100;
 }
-.logo-wrap{display:flex;align-items:center;gap:9px;}
-
-/* Logo: blue-background image, no white circle */
-.logo-img{width:56px;height:56px;border-radius:50%;object-fit:cover;display:block;}
-
-.logo-text{color:#fff;font-family:'Trebuchet MS',sans-serif;font-size:17px;font-weight:900;line-height:1.2;letter-spacing:0.01em;}
-.logo-text span{display:block;font-family:'Trebuchet MS',sans-serif;font-size:11.5px;font-weight:400;opacity:.75;}
+.logo-wrap{display:flex;align-items:center;gap:10px;flex:1;}
+.logo-img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.40);flex-shrink:0;}
+.logo-text{color:#fff;font-family:'Lato',sans-serif;font-size:15px;font-weight:900;line-height:1.2;letter-spacing:0.01em;}
+.logo-text span{display:block;font-family:'Lato',sans-serif;font-size:11.5px;font-weight:400;opacity:.68;}
 .nav-right{display:flex;align-items:center;gap:8px;}
-.back-btn{background:rgba(255,255,255,0.15);border:none;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;}
-
-/* Hamburger — explicit sizing & z-index so it's never hidden under battery icon */
-.hamburger{background:none;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;position:relative;z-index:101;}
-.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;}
+/* Hamburger */
+.hamburger{background:none;border:none;cursor:pointer;padding:5px;display:flex;flex-direction:column;gap:5px;position:relative;z-index:101;}
+.hamburger span{display:block;width:22px;height:2.5px;background:#fff;border-radius:2px;}
 
 #main{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;}
 #main::-webkit-scrollbar{width:3px;}
@@ -74,16 +68,16 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 .ab-arrow{width:32px;height:32px;flex-shrink:0;background:rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:900;}
 .bottom-space{height:8px;}
 
-/* BOTTOM NAV — centered items, safe-area padding */
+/* BOTTOM NAV — matches About Us page exactly */
 #bottomnav{
+  width:100%;
+  height:62px;
   background:#fff;
-  border-top:1px solid #e0e0e0;
   display:flex;
   align-items:stretch;
+  border-top:1px solid #e0e0e0;
+  box-shadow:0 -2px 12px rgba(0,0,0,0.10);
   flex-shrink:0;
-  height:62px;
-  padding-bottom:env(safe-area-inset-bottom,0);
-  box-shadow:0 -2px 10px rgba(0,0,0,0.08);
 }
 .bnav-item{
   flex:1;
@@ -91,17 +85,20 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  padding:8px 0 6px;
-  gap:3px;
-  background:none;
-  border:none;
-  cursor:pointer;
+  color:#888;
   text-decoration:none;
-  text-align:center;
+  font-family:'Lato',sans-serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.04em;
+  gap:3px;
+  border:none;
+  background:none;
+  cursor:pointer;
 }
-.bnav-icon{font-size:22px;line-height:1;}
-.bnav-label{font-size:10px;font-weight:700;color:#888;font-family:'Trebuchet MS',sans-serif;letter-spacing:1.5px;text-transform:uppercase;}
-.bnav-item.active .bnav-label{color:var(--navy);font-weight:900;}
+.bnav-icon{font-size:20px;line-height:1;}
+.bnav-label{font-size:10px;font-weight:700;color:#888;}
+.bnav-item.active .bnav-label,.bnav-item.active{color:var(--navy);}
 .bnav-donate.active .bnav-label{color:var(--red);}
 
 /* MENU OVERLAY */
@@ -217,14 +214,12 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 <!-- TOP NAV -->
 <div id="topnav">
   <div class="logo-wrap">
-    <img class="logo-img" src="images/Blue_Meals_Logo.jpg" alt="MOWP Logo">
+    <img class="logo-img" src="images/Blue_Meals_Logo.jpg" alt="MOWP Logo" onerror="this.src='https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/mowp-logo-header_0_0.png'">
     <div class="logo-text">Meals on Wheels<span>of Pasco County</span></div>
   </div>
-  <div class="nav-right">
-    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </div>
 
 <!-- MENU OVERLAY -->
@@ -380,16 +375,16 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
   </div>
 
   <!-- TRIPLE DOT DIVIDER — end of page -->
-  <div class="divider" style="margin:20px 16px 24px;"><div class="divider-line"></div><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div><div class="divider-line"></div></div>
+  <div class="divider" style="margin:20px 0 24px;"><div class="divider-left"></div><div class="divider-center"><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div></div><div class="divider-right"></div></div>
 
 </div>
 
 <!-- BOTTOM NAV -->
 <nav id="bottomnav">
-  <a class="bnav-item active" href="index.html"><span class="bnav-icon">&#127968;</span><span class="bnav-label">Home</span></a>
-  <a class="bnav-item bnav-donate" href="javascript:window.open('https://www.mealsonwheelspasco.org/Donate%20Form','_blank')"><span class="bnav-icon">&#10084;&#65039;</span><span class="bnav-label">Donate</span></a>
-  <a class="bnav-item" href="mowp_programs.html"><span class="bnav-icon">&#127859;</span><span class="bnav-label">Programs</span></a>
-  <a class="bnav-item" href="mowp_events.html"><span class="bnav-icon">&#128197;</span><span class="bnav-label">Events</span></a>
+  <a class="bnav-item active" href="index.html"><span class="bnav-icon">🏠</span><span class="bnav-label">HOME</span></a>
+  <a class="bnav-item bnav-donate" href="javascript:window.open('https://www.mealsonwheelspasco.org/Donate%20Form','_blank')"><span class="bnav-icon">❤️</span><span class="bnav-label">DONATE</span></a>
+  <a class="bnav-item" href="mowp_programs.html"><span class="bnav-icon">🍳</span><span class="bnav-label">PROGRAMS</span></a>
+  <a class="bnav-item" href="mowp_events.html"><span class="bnav-icon">📅</span><span class="bnav-label">EVENTS</span></a>
 </nav>
 
 </div><script>
