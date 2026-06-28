@@ -1,110 +1,131 @@
-const CACHE_VERSION = 'mowp-v2.0.0';
-const STATIC_CACHE = `${CACHE_VERSION}-static`;
+// Meals on Wheels Pasco
+// Service Worker
+// Version 2.0.1
 
-// Files that rarely change
-const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/favicon.png',
-  '/icon-192.png',
-  '/icon-512.png'
+const CACHE_NAME = "mowp-v2.0.1";
+
+const APP_FILES = [
+    "/",
+    "/index.html",
+    "/manifest.json",
+    "/favicon.png",
+    "/icon-192.png",
+    "/icon-512.png"
 ];
 
 // Install
-self.addEventListener('install', event => {
-  self.skipWaiting();
 
-  event.waitUntil(
-    caches.open(STATIC_CACHE)
-      .then(cache => cache.addAll(STATIC_ASSETS))
-  );
+self.addEventListener("install", event => {
+
+    self.skipWaiting();
+
+    event.waitUntil(
+
+        caches.open(CACHE_NAME)
+            .then(cache => cache.addAll(APP_FILES))
+
+    );
+
 });
 
 // Activate
-self.addEventListener('activate', event => {
 
-  event.waitUntil(
+self.addEventListener("activate", event => {
 
-    caches.keys().then(keys => {
+    event.waitUntil(
 
-      return Promise.all(
+        caches.keys().then(keys => {
 
-        keys
-          .filter(key => key !== STATIC_CACHE)
-          .map(key => caches.delete(key))
+            return Promise.all(
 
-      );
+                keys
+                    .filter(key => key !== CACHE_NAME)
+                    .map(key => caches.delete(key))
 
-    })
+            );
 
-  );
+        })
 
-  self.clients.claim();
+    );
+
+    self.clients.claim();
 
 });
 
 // Fetch
-self.addEventListener('fetch', event => {
 
-  if (event.request.method !== 'GET') return;
+self.addEventListener("fetch", event => {
 
-  const url = new URL(event.request.url);
+    if (event.request.method !== "GET") return;
 
-  // Always fetch fresh HTML pages
-  if (
-      event.request.mode === 'navigate' ||
-      url.pathname.endsWith('.html') ||
-      url.pathname === '/'
-  ) {
+    const requestURL = new URL(event.request.url);
 
-      event.respondWith(
+    // Always get newest HTML
 
-          fetch(event.request)
-            .then(response => {
+    if (
+        event.request.mode === "navigate" ||
+        requestURL.pathname.endsWith(".html") ||
+        requestURL.pathname === "/"
+    ) {
 
-                const copy = response.clone();
+        event.respondWith(
 
-                caches.open(STATIC_CACHE)
-                      .then(cache => cache.put(event.request, copy));
+            fetch(event.request)
 
-                return response;
+                .then(networkResponse => {
+
+                    const copy = networkResponse.clone();
+
+                    caches.open(CACHE_NAME)
+                        .then(cache => cache.put(event.request, copy));
+
+                    return networkResponse;
+
+                })
+
+                .catch(() => caches.match(event.request))
+
+        );
+
+        return;
+
+    }
+
+    // Cache images/css/js/fonts
+
+    event.respondWith(
+
+        caches.match(event.request)
+
+            .then(cacheResponse => {
+
+                if (cacheResponse) {
+
+                    return cacheResponse;
+
+                }
+
+                return fetch(event.request)
+
+                    .then(networkResponse => {
+
+                        if (!networkResponse || networkResponse.status !== 200) {
+
+                            return networkResponse;
+
+                        }
+
+                        const copy = networkResponse.clone();
+
+                        caches.open(CACHE_NAME)
+                            .then(cache => cache.put(event.request, copy));
+
+                        return networkResponse;
+
+                    });
 
             })
-            .catch(() => caches.match(event.request))
 
-      );
-
-      return;
-
-  }
-
-  // Cache First for images, css, js
-
-  event.respondWith(
-
-      caches.match(event.request)
-        .then(cached => {
-
-            if (cached) return cached;
-
-            return fetch(event.request)
-                .then(response => {
-
-                    if (!response || response.status !== 200)
-                        return response;
-
-                    const copy = response.clone();
-
-                    caches.open(STATIC_CACHE)
-                          .then(cache => cache.put(event.request, copy));
-
-                    return response;
-
-                });
-
-        })
-
-  );
+    );
 
 });
