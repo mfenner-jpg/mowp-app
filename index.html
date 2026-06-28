@@ -32,10 +32,10 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 .logo-wrap{display:flex;align-items:center;gap:9px;}
 
 /* Logo: blue-background image, no white circle */
-.logo-img{width:58px;height:58px;border-radius:50%;object-fit:cover;display:block;border:2px solid rgba(255,255,255,0.15);}
+.logo-img{width:56px;height:56px;border-radius:50%;object-fit:cover;display:block;}
 
-.logo-text{color:#fff;font-size:16px;font-weight:900;line-height:1.25;}
-.logo-text span{display:block;font-size:12px;font-weight:400;opacity:.8;}
+.logo-text{color:#fff;font-family:'Trebuchet MS',sans-serif;font-size:17px;font-weight:900;line-height:1.2;letter-spacing:0.01em;}
+.logo-text span{display:block;font-family:'Trebuchet MS',sans-serif;font-size:11.5px;font-weight:400;opacity:.75;}
 .nav-right{display:flex;align-items:center;gap:8px;}
 .back-btn{background:rgba(255,255,255,0.15);border:none;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;}
 
@@ -54,9 +54,13 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 .text-card{background:#fff;margin:10px 16px;border-radius:14px;padding:13px 16px;box-shadow:var(--shadow);border-left:4px solid var(--green);}
 .text-card h3{color:var(--navy);font-family:'Trebuchet MS',sans-serif;font-size:22px;font-weight:700;margin-bottom:5px;}
 .text-card p{color:var(--text-dark);font-family:Georgia,serif;font-size:18px;line-height:1.9;}
-.divider{display:flex;align-items:center;gap:0;margin:16px 16px;}
-.divider-line{flex:1;height:2px;background:#cccccc;}
-.divider-dots{display:inline-flex;gap:6px;padding:0 14px;margin-top:-6px;}.divider-dot-navy{width:10px;height:10px;border-radius:50%;background:#1B3D6E;display:inline-block;}.divider-dot-gold{width:10px;height:10px;border-radius:50%;background:#ffc107;display:inline-block;}
+/* TRIPLE DOT DIVIDER — Drupal confirmed */
+.divider{width:100%;border-collapse:collapse;margin:20px 0;display:table;}
+.divider-left,.divider-right{display:table-cell;border-top:2px solid #cccccc;width:50%;height:0;line-height:0;padding:0;font-size:0;}
+.divider-center{display:table-cell;padding:0 14px;text-align:center;vertical-align:middle;white-space:nowrap;}
+.divider-dots{display:inline-flex;align-items:center;gap:6px;margin-top:-6px;vertical-align:top;}
+.divider-dot-navy{width:10px;height:10px;border-radius:50%;background:#1B3D6E;display:inline-block;}
+.divider-dot-gold{width:10px;height:10px;border-radius:50%;background:#ffc107;display:inline-block;}
 .section-label{font-family:'Trebuchet MS',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:2px;padding:8px 16px 6px;}
 .action-buttons{padding:0 16px;display:flex;flex-direction:column;gap:8px;}
 .action-btn{display:block;position:relative;height:90px;border-radius:14px;overflow:hidden;text-decoration:none;box-shadow:var(--shadow);transition:transform 0.15s;}
@@ -73,20 +77,21 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 /* BOTTOM NAV — centered items, safe-area padding */
 #bottomnav{
   background:#fff;
-  border-top:1px solid #e4e4e4;
+  border-top:1px solid #e0e0e0;
   display:flex;
   align-items:stretch;
   flex-shrink:0;
-  height:calc(62px + env(safe-area-inset-bottom,0px));
-  padding-bottom:env(safe-area-inset-bottom,0px);
+  height:62px;
+  padding-bottom:env(safe-area-inset-bottom,0);
+  box-shadow:0 -2px 10px rgba(0,0,0,0.08);
 }
 .bnav-item{
   flex:1;
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:flex-start;
-  padding-top:10px;
+  justify-content:center;
+  padding:8px 0 6px;
   gap:3px;
   background:none;
   border:none;
@@ -94,9 +99,9 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
   text-decoration:none;
   text-align:center;
 }
-.bnav-icon{font-size:20px;line-height:1;}
-.bnav-label{font-size:10px;font-weight:700;color:#999;font-family:'Trebuchet MS',sans-serif;letter-spacing:1px;}
-.bnav-item.active .bnav-label{color:var(--navy);}
+.bnav-icon{font-size:22px;line-height:1;}
+.bnav-label{font-size:10px;font-weight:700;color:#888;font-family:'Trebuchet MS',sans-serif;letter-spacing:1.5px;text-transform:uppercase;}
+.bnav-item.active .bnav-label{color:var(--navy);font-weight:900;}
 .bnav-donate.active .bnav-label{color:var(--red);}
 
 /* MENU OVERLAY */
@@ -178,10 +183,11 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
   text-decoration:none;
 }
 
-/* GOLD SINGLE DOT DIVIDER */
-.divider-single{display:flex;align-items:center;gap:0;margin:20px 16px;}
-.divider-single .divider-line{flex:1;height:2px;background:#cccccc;}
-.divider-single-dot{width:12px;height:12px;border-radius:50%;background:#ffc107;display:inline-block;margin:-7px 14px 0;vertical-align:top;}
+/* GOLD SINGLE DOT DIVIDER — Drupal confirmed */
+.divider-single{width:100%;border-collapse:collapse;margin:20px 0;display:table;}
+.divider-single-left,.divider-single-right{display:table-cell;border-top:2px solid #cccccc;width:50%;height:0;line-height:0;padding:0;font-size:0;}
+.divider-single-center{display:table-cell;padding:0 14px;text-align:center;vertical-align:middle;white-space:nowrap;}
+.divider-single-dot{width:12px;height:12px;border-radius:50%;background:#ffc107;display:inline-block;margin-top:-7px;vertical-align:top;}
 
 /* --- NEWS & BLOGS --- */
 .news-wrap { background:#f4f4f4; padding:0 14px 14px; }
@@ -302,7 +308,7 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
   </div></div>
 
   <!-- EXPLORE PROMO BANNERS -->
-  <div class="divider"><div class="divider-line"></div><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div><div class="divider-line"></div></div>
+  <div class="divider"><div class="divider-left"></div><div class="divider-center"><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div></div><div class="divider-right"></div></div>
   <div class="section-label">Explore</div>
   <a class="promo-banner" href="mowp_getmeals.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/Front%20Promo%20Banner%20Ver%202.jpg?h=f0d95172&itok=LOnFK75c"><div class="promo-banner-overlay"><h3>Get Meals!</h3><p>Fresh, hot meals delivered daily right to you.</p></div></a>
   <a class="promo-banner" href="mowp_programs.html"><img src="https://www.mealsonwheelspasco.org/sites/mealsonwheelspasco/files/styles/front_page_promobanner/public/2026-03/Feeding%20Heart%20Red%20850x850.jpg?h=6a4a5c49&itok=6g32qOpq"><div class="promo-banner-overlay"><h3>Feeding You With Love Food Pantry</h3><p>Nourishing our community, one meal at a time.</p></div></a>
@@ -310,7 +316,7 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
 
   
   <!-- DIVIDER -->
-  <div class="divider"><div class="divider-line"></div><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div><div class="divider-line"></div></div>
+  <div class="divider"><div class="divider-left"></div><div class="divider-center"><div class="divider-dots"><div class="divider-dot-navy"></div><div class="divider-dot-gold"></div><div class="divider-dot-navy"></div></div></div><div class="divider-right"></div></div>
 
   <!-- UPCOMING EVENTS — update dates/times to match your Drupal calendar -->
   <div class="section-header-block white-bg">Upcoming Events</div>
@@ -347,7 +353,7 @@ body{height:100%;overflow:hidden;background:#d0d0d0;display:flex;align-items:cen
   </div>
 
   <!-- SINGLE DOT DIVIDER -->
-  <div class="divider-single"><div class="divider-line"></div><div class="divider-single-dot"></div><div class="divider-line"></div></div>
+  <div class="divider-single"><div class="divider-single-left"></div><div class="divider-single-center"><div class="divider-single-dot"></div></div><div class="divider-single-right"></div></div>
 
   <!-- NEWS & BLOGS — pulled from mowp_news.html -->
   <div class="section-header-block">News &amp; Blogs</div>
